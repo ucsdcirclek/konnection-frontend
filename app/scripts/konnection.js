@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('konnection', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+var app = angular.module('konnection', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router']);
+
+app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -12,3 +13,7 @@ angular.module('konnection', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
     $urlRouterProvider.otherwise('/');
   })
 ;
+
+app.run(function(Restangular, BaseUrlCalculator) {
+    Restangular.setBaseUrl('http://api.ucsdcki.org');
+});
