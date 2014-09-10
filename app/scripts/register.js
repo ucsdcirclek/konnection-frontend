@@ -9,15 +9,12 @@ app.controller('RegisterController', ['$scope', 'Restangular', function($scope, 
 
 
 	$scope.save = function(user) {
-		//$scope.master = angular.copy(user);
 		Restangular.all('register').post(user).then(function() {
 			console.log('Successful');
 		}, function() {
 			console.log('Error');
 		});
 	};
-
-
 
 	$scope.reset = function() {
 		$scope.user = angular.copy($scope.master);

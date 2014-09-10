@@ -5,10 +5,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
-  <script type="text/javascript" src="register.js"></script>
+  <script type="text/javascript" src="auth-ctrl.js"></script>
 </head>
-<body ng-app="register">
-  <div ng-controller="RegisterController">
+<body ng-app="authentication">
+  <div ng-controller="AuthenticationController">
     <form novalidate class="simple-form">
       Username: <input type="text" ng-model="user.username" /><br />
       E-mail: <input type="email" ng-model="user.email" /><br />
