@@ -8,13 +8,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'partials/main.html',
       controller: 'MainCtrl'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'partials/login.html',
+      controller: 'AuthCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
 })
 ;
 
-app.run(function(Restangular, BaseUrlCalculator) {
+app.run(function(Restangular) {
   Restangular.setBaseUrl('http://api.ucsdcki.org');
 
   Restangular.setRequestInterceptor(function(elem, operation) {
@@ -25,7 +30,7 @@ app.run(function(Restangular, BaseUrlCalculator) {
   });
 
   if (sessionStorage.token || localStorage.token) {
-    Restangular.setDefaultHeaders({'X-Auth-Token': $window.localStorage.token});
+    Restangular.setDefaultHeaders({'X-Auth-Token': localStorage.token});
   }
 
 });
