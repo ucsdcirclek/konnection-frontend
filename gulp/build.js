@@ -9,7 +9,10 @@ var $ = require('gulp-load-plugins')({
 gulp.task('styles', function () {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
-    .pipe($.sass({style: 'expanded', includePaths: ['styles'].concat(require('node-neat').includePaths)}))
+    .pipe($.rubySass({
+      style: 'expanded',
+      precision: 10
+    }))
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size());
