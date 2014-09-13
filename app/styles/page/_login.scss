@@ -1,0 +1,17 @@
+#login {
+  display: table;
+  height: 100%;
+  padding: 10%;
+
+  #login-form {
+    @include span-columns(6);
+    height: 100%;
+    border-right: 1px solid $light-gray;
+    padding-right: 3rem;
+  }
+
+  #register {
+    @include span-columns(6);
+    height: 100%;
+  }
+}

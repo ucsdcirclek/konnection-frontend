@@ -1,8 +1,23 @@
-<div>
-  <form ng-submit="login()">
-    Username: <input type="text" ng-model="username"/><br />
-    Password <input type="password" ng-model="password"/><br />
-    <input type="checkbox" ng-model="remember">Remember me<br />
-    <button type="submit">Login</button>
-  </form>
+<div id="login">
+  <div id="login-form">
+    <form ng-submit="login()">
+      <h3>Login</h3>
+      <hr />
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="username" ng-model="username">
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="password" ng-model="password">
+      <input type="checkbox" ng-model="remember">Remember me
+      <input class="button" type="submit" value="Login">
+    </form>
+  </div>
+
+  <div id="register">
+    <h3>Not a member? Join us!</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac est convallis, sodales neque sed, consectetur purus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum pharetra, quam non pretium viverra, nisi nisl lobortis lectus, ac faucibus nunc ex vitae nulla.
+    </p>
+    <button class="button" href="#">Register</button>
+    <button class="button" href="#">Learn More</button>
+  </div>
 </div>

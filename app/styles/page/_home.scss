@@ -1,0 +1,12 @@
+#content {
+  #main {
+    @include span-columns(8);
+    height: 100%;
+    padding-left: 20px;
+  }
+
+  #sidebar {
+    @include span-columns(4);
+    height: 100%;
+  }
+}
