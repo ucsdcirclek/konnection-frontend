@@ -39,6 +39,28 @@ app.run(function(Restangular) {
     return elem;
   });
 
+  Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+    var extractedData;
+    // .. to look for getList operations
+    if (operation === "getList") {
+      // .. and handle the data and meta data
+      extractedData = data.data;
+      extractedData.meta = {
+        total: data.total,
+        per_page: data.per_page,
+        current_page: data.current_page,
+        last_page: data.last_page,
+        from: data.form,
+        to: data.to,
+      ;
+    }
+    else {
+      extractedData = data[what];
+    }
+
+    return extractedData;
+  });
+
   if (sessionStorage.token || localStorage.token) {
     Restangular.setDefaultHeaders({'X-Auth-Token': localStorage.token});
   }
