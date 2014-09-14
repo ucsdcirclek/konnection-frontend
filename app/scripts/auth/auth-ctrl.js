@@ -36,30 +36,31 @@ app
         }
 
         var credentials = {username: $scope.auth.username, password: $scope.auth.password};
-        var user = Auth.login(
+
+        Auth.login(
           credentials,
-          function() {
+          function(user) {
+            // Reset Web Storage
+            localStorage.clear();
+            sessionStorage.clear();
+
+            // Handle remember me
+            if ($scope.remember) {
+              $window.localStorage.token = user.token;
+            }
+            else {
+              $window.sessionStorage.token = user.token;
+            }
+
+            // Set headers
+            Restangular.setDefaultHeaders({'X-Auth-Token': $window.sessionStorage.token});
+
             console.log('Login successful');
           },
           function() {
             console.log('Unable to login');
           }
         );
-
-        // Reset Web Storage
-        localStorage.clear();
-        sessionStorage.clear();
-
-        // Handle remember me
-        if ($scope.remember) {
-          $window.localStorage.token = user.token;
-        }
-        else {
-          $window.sessionStorage.token = user.token;
-        }
-
-        // Set headers
-        Restangular.setDefaultHeaders({'X-Auth-Token': $window.sessionStorage.token});
       };
 
       $scope.logout = function() {
