@@ -10,9 +10,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'MainCtrl'
     })
     .state('login', {
+      abstract: true,
       url: '/login',
-      templateUrl: 'partials/login.html',
+      templateUrl: 'partials/login/login.html',
       controller: 'AuthCtrl'
+    })
+    .state('login.info', {
+      url: '',
+      templateUrl: 'partials/login/login.info.html'
+    })
+    .state('login.register', {
+      url: '/register',
+      templateUrl: 'partials/login/login.register.html'
     });
 
   $urlRouterProvider.otherwise('/');

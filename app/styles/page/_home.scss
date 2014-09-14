@@ -9,4 +9,10 @@
     @include span-columns(4);
     height: 100%;
   }
+
+  h2 {
+    padding-bottom: .3em;
+    margin-bottom: .3em;
+    border-bottom: 1px solid $light-gray;
+  }
 }
