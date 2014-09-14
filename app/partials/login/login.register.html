@@ -1,20 +1,20 @@
-<form>
+<form ng-submit="register()">
   <h2>Let's get registered!</h2>
 
   <label for="username">Username</label>
-  <input type="text" name="username">
+  <input type="text" name="username" ng-model="username">
 
   <label for="email">Email</label>
-  <input type="email" name="email">
+  <input type="email" name="email" ng-model="email">
 
   <label for="password">Password</label>
-  <input type="password" name="password">
+  <input type="password" name="password" ng-model="password">
 
   <label for="first_name">First Name</label>
-  <input type="text" name="first_name">
+  <input type="text" name="first_name" ng-model="firstName">
 
   <label for="last_name">Last Name</label>
-  <input type="text" name="last_name">
+  <input type="text" name="last_name" ng-model="lastName">
 
   <input type="submit" class="button" value="Register">
 </form>

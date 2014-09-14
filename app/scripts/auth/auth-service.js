@@ -3,9 +3,15 @@
 app.factory('Auth', function(Restangular) {
 
   return {
+    register: function(user, success, error) {
+      Restangular.all('register').post(user).then(function(result) {
+        success();
+        return result;
+      }, function() {
+        error();
+      });
+    },
     login: function(credentials, success, error) {
-      var credentials = {username: $scope.username, password: $scope.password};
-
       Restangular.all('auth').post(credentials).then(function(result) {
         success();
         return result;

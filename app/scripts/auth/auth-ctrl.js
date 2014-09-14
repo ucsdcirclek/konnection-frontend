@@ -1,15 +1,40 @@
 'use strict';
 
 app
-  .controller('AuthController',
+  .controller('AuthCtrl',
     ['$window', '$scope', 'Restangular', 'Auth', function($window, $scope, Restangular, Auth) {
+      $scope.register = function() {
+        if ($window.localStorage.token || $window.sessionStorage.token) {
+          console.log('Already logged in!');
+          return;
+        }
+
+        var input = {
+          username: $scope.username,
+          email: $scope.email,
+          password: $scope.password,
+          first_name: $scope.firstName,
+          last_name: $scope.lastName
+        };
+
+        var user = Auth.register(
+          input,
+          function() {
+            console.log('Registration successful');
+          },
+          function() {
+            console.log('Unable to register');
+          }
+        );
+      };
+
       $scope.login = function() {
         if ($window.localStorage.token || $window.sessionStorage.token) {
           console.log('Already logged in!');
           return;
         }
 
-        var credentials = {username: $scope.username, password: $scope.password};
+        var credentials = {username: $scope.auth.username, password: $scope.auth.password};
         var user = Auth.login(
           credentials,
           function() {
