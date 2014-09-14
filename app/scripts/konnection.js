@@ -21,7 +21,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('login.register', {
       url: '/register',
-      templateUrl: 'partials/login/login.register.html'
+      templateUrl: 'partials/login/login.register.html',
+      controller: 'AuthCtrl'
     });
 
   $urlRouterProvider.otherwise('/');

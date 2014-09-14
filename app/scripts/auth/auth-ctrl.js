@@ -13,6 +13,7 @@ app
           username: $scope.username,
           email: $scope.email,
           password: $scope.password,
+          password_confirmation: $scope.password_confirm,
           first_name: $scope.firstName,
           last_name: $scope.lastName
         };
