@@ -23,6 +23,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/register',
       templateUrl: 'partials/login/login.register.html',
       controller: 'AuthCtrl'
+    })
+    .state('events', {
+      url: '/events',
+      templateUrl: 'partials/events/event.html',
+      controller: 'EventController'
     });
 
   $urlRouterProvider.otherwise('/');

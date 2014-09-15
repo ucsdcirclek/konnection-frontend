@@ -1,0 +1,9 @@
+<h1>Events</h1>
+<ul>
+	<li ng-repeat="event in events">
+		<h3>{{event.title}}</h3>
+		<p><strong>Description: </strong>{{event.description}}</p>
+		<p><strong>Location: </strong>{{event.event_location}}</p>
+		<p><strong>From</strong> {{event.start_time}} <strong>to</strong> {{event.end_time}}</p>
+	</li>
+</ul>
