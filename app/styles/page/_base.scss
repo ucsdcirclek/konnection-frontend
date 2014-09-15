@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  @include outer-container;
+  background: url('../images/treesbg.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: $light-green;
+  height: 100%;
+}
+
+#container{
+  @include span-columns(12);
+  background: $cream;
+  min-height: 80%;
+}

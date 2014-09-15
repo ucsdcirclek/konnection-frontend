@@ -1,0 +1,19 @@
+<div id="login">
+  <div id="login-form">
+    <form ng-submit="login()">
+      <h3>Login</h3>
+      <hr />
+      <label for="username">Username</label>
+      <input type="text" name="username" placeholder="username" ng-model="auth.username">
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="password" ng-model="auth.password">
+      <input type="checkbox" ng-model="remember">Remember me<br />
+      <br />
+      <input class="button" type="submit" value="Login">
+    </form>
+  </div>
+
+  <div ui-view id="register"></div>
+
+
+</div>

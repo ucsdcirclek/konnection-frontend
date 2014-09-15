@@ -10,8 +10,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'MainCtrl'
     })
     .state('login', {
+      abstract: true,
       url: '/login',
-      templateUrl: 'partials/login.html',
+      templateUrl: 'partials/login/login.html',
+      controller: 'AuthCtrl'
+    })
+    .state('login.info', {
+      url: '',
+      templateUrl: 'partials/login/login.info.html'
+    })
+    .state('login.register', {
+      url: '/register',
+      templateUrl: 'partials/login/login.register.html',
       controller: 'AuthCtrl'
     });
 
@@ -27,6 +37,28 @@ app.run(function(Restangular) {
       return null;
     }
     return elem;
+  });
+
+  Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+    var extractedData;
+    // .. to look for getList operations
+    if (operation === "getList") {
+      // .. and handle the data and meta data
+      extractedData = data.data;
+      extractedData.meta = {
+        total: data.total,
+        per_page: data.per_page,
+        current_page: data.current_page,
+        last_page: data.last_page,
+        from: data.form,
+        to: data.to,
+      ;
+    }
+    else {
+      extractedData = data[what];
+    }
+
+    return extractedData;
   });
 
   if (sessionStorage.token || localStorage.token) {

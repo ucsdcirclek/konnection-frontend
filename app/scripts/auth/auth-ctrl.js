@@ -1,39 +1,66 @@
 'use strict';
 
 app
-  .controller('AuthController',
+  .controller('AuthCtrl',
     ['$window', '$scope', 'Restangular', 'Auth', function($window, $scope, Restangular, Auth) {
+      $scope.register = function() {
+        if ($window.localStorage.token || $window.sessionStorage.token) {
+          console.log('Already logged in!');
+          return;
+        }
+
+        var input = {
+          username: $scope.username,
+          email: $scope.email,
+          password: $scope.password,
+          password_confirmation: $scope.password_confirm,
+          first_name: $scope.firstName,
+          last_name: $scope.lastName
+        };
+
+        var user = Auth.register(
+          input,
+          function() {
+            console.log('Registration successful');
+          },
+          function() {
+            console.log('Unable to register');
+          }
+        );
+      };
+
       $scope.login = function() {
         if ($window.localStorage.token || $window.sessionStorage.token) {
           console.log('Already logged in!');
           return;
         }
 
-        var credentials = {username: $scope.username, password: $scope.password};
-        var user = Auth.login(
+        var credentials = {username: $scope.auth.username, password: $scope.auth.password};
+
+        Auth.login(
           credentials,
-          function() {
+          function(user) {
+            // Reset Web Storage
+            localStorage.clear();
+            sessionStorage.clear();
+
+            // Handle remember me
+            if ($scope.remember) {
+              $window.localStorage.token = user.token;
+            }
+            else {
+              $window.sessionStorage.token = user.token;
+            }
+
+            // Set headers
+            Restangular.setDefaultHeaders({'X-Auth-Token': $window.sessionStorage.token});
+
             console.log('Login successful');
           },
           function() {
             console.log('Unable to login');
           }
         );
-
-        // Reset Web Storage
-        localStorage.clear();
-        sessionStorage.clear();
-
-        // Handle remember me
-        if ($scope.remember) {
-          $window.localStorage.token = user.token;
-        }
-        else {
-          $window.sessionStorage.token = user.token;
-        }
-
-        // Set headers
-        Restangular.setDefaultHeaders({'X-Auth-Token': $window.sessionStorage.token});
       };
 
       $scope.logout = function() {
