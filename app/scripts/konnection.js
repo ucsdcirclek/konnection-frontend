@@ -52,7 +52,7 @@ app.run(function(Restangular) {
         last_page: data.last_page,
         from: data.form,
         to: data.to,
-      ;
+      };
     }
     else if (what !== 'auth') {
       extractedData = data[what];
