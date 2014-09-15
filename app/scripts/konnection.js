@@ -54,7 +54,7 @@ app.run(function(Restangular) {
         to: data.to,
       ;
     }
-    else {
+    else if (what !== 'auth') {
       extractedData = data[what];
     }
 
