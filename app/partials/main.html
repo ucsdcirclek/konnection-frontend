@@ -18,10 +18,12 @@
   </div>
 
   <div id="sidebar">
-    <h2>Welcome [name]!</h2>
+    <div ng-if="currentUser">
+      <h2>Welcome {{ currentUser.first_name }}!</h2>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla hendrerit dui eget mi blandit, in maximus metus
-      condimentum.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla hendrerit dui eget mi blandit, in maximus metus
+        condimentum.</p>
+    </div>
 
     <h2>Upcoming Events</h2>
 
