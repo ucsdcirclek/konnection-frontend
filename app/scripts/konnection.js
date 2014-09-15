@@ -26,8 +26,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 
   $urlRouterProvider.otherwise('/');
-})
-;
+});
+
+app.constant('USER_ROLES', {
+  all: '*',
+  admin: 'admin',
+  officer: 'officer',
+  member: 'member'
+});
 
 app.run(function(Restangular) {
   Restangular.setBaseUrl('http://api.ucsdcki.org');
@@ -51,7 +57,7 @@ app.run(function(Restangular) {
         current_page: data.current_page,
         last_page: data.last_page,
         from: data.form,
-        to: data.to,
+        to: data.to
       };
     }
     else if (what !== 'auth') {
