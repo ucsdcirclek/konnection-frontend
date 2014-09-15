@@ -2,7 +2,7 @@
 
 app
   .controller('AuthCtrl',
-    ['$window', '$scope', 'Restangular', 'Auth', function($window, $scope, Restangular, Auth) {
+    ['$window', '$scope', 'Restangular', 'Auth', '$state', function($window, $scope, Restangular, Auth, $state) {
       $scope.register = function() {
         if ($window.localStorage.token || $window.sessionStorage.token) {
           console.log('Already logged in!');
@@ -37,28 +37,10 @@ app
 
         var credentials = {username: $scope.auth.username, password: $scope.auth.password};
 
-        Auth.login(
-          credentials,
+        Auth.login(credentials, $scope.remember).then(
           function(user) {
-            // Reset Web Storage
-            localStorage.clear();
-            sessionStorage.clear();
-
-            // Handle remember me
-            if ($scope.remember) {
-              $window.localStorage.token = user.token;
-            }
-            else {
-              $window.sessionStorage.token = user.token;
-            }
-
-            // Set headers
-            Restangular.setDefaultHeaders({'X-Auth-Token': $window.sessionStorage.token});
-
-            console.log('Login successful');
-          },
-          function() {
-            console.log('Unable to login');
+            $scope.setCurrentUser(user);
+            $state.go('home');
           }
         );
       };
@@ -66,9 +48,7 @@ app
       $scope.logout = function() {
         Auth.logout(
           function() {
-            sessionStorage.clear();
-            sessionStorage.clear();
-            console.log('Logged out.');
+
           },
           function() {
             console.log('Unable to log out.');
