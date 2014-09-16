@@ -28,6 +28,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/events',
       templateUrl: 'partials/events/event.html',
       controller: 'EventController'
+    })
+    .state('calendar', {
+      url: '/calendar',
+      templateUrl: 'partials/calendar/calendar.html',
+      controller: 'EventController'
     });
 
   $urlRouterProvider.otherwise('/');
