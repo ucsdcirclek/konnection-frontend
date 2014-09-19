@@ -1,0 +1,10 @@
+<div>
+	<ul>
+		<li ng-repeat="event in events | orderBy:'start_time'">
+			<div>
+				<h3>{{event.start_time | date:'EEEE, MMMM d'}}</h3>
+				<p>{{event.title}}</p>
+			</div>			
+		</li>
+	</ul>
+</div>
