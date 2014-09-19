@@ -1,0 +1,10 @@
+<h1>Upcoming Events</h1>
+<ul>
+	<li ng-repeat="event in events">
+		<h3>{{event.title}}</h3>
+		<p><strong>Description: </strong>{{event.description}}</p>
+		<p><strong>Location: </strong>{{event.event_location}}</p>
+		<p><strong>Date: </strong> {{event.start_time | date:"EEEE, MMMM d"}}
+		<p><strong>Time: </strong>{{event.start_time | date:"h:ma 'to '"}}{{event.end_time | date:"h:ma"}}</p>
+	</li>
+</ul>
