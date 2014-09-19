@@ -27,6 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('event', {
       url: '/event',
       templateUrl: 'partials/event.html'
+    })
     .state('events', {
       url: '/events',
       templateUrl: 'partials/events/event.html',
