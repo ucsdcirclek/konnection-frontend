@@ -1,10 +1,15 @@
-<div>
-	<ul>
-		<li ng-repeat="event in events | orderBy:'start_time'">
-			<div>
-				<h3>{{event.start_time | date:'EEEE, MMMM d'}}</h3>
-				<p>{{event.title}}</p>
-			</div>			
-		</li>
-	</ul>
-</div>
+<h1>Upcoming Events</h1><br />
+<ul>
+	<li ng-repeat="event in events">
+		<h3>{{event.start_time | date:"EEEE, MMMM d"}}</h3>
+		<h5>{{event.title}}</h5>
+		<p><a ng-click="showDescription = !showDescription" ng-hide="showDescription">[more]</a></p>
+		<p><a ng-click="showDescription = !showDescription" ng-show="showDescription">[less]</a></p>
+		<div ng-show="showDescription">
+			<p><strong>Description: </strong>{{event.description}}</p>
+			<p><strong>Location: </strong>{{event.event_location}}</p>
+
+			<p><strong>Time: </strong>{{event.start_time | date:"h:ma 'to '"}}{{event.end_time | date:"h:ma"}}</p><br />
+		</div>
+	</li>
+</ul>
