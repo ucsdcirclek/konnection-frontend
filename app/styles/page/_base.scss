@@ -15,5 +15,4 @@ body {
 #container{
   @include span-columns(12);
   background: $cream;
-  min-height: 80%;
 }

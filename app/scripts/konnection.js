@@ -24,6 +24,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/login/login.register.html',
       controller: 'AuthCtrl'
     })
+    .state('event', {
+      url: '/event',
+      templateUrl: 'partials/event.html'
+    })
     .state('events', {
       url: '/events',
       templateUrl: 'partials/events/event.html',
@@ -39,14 +43,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
 });
 
 app.constant('USER_ROLES', {
-  all: '*',
-  admin: 'admin',
-  officer: 'officer',
-  member: 'member'
+  all: 0,
+  admin: 1,
+  officer: 2,
+  member: 3
 });
 
 app.run(function(Restangular) {
-  Restangular.setBaseUrl('http://api.ucsdcki.org');
+  Restangular.setBaseUrl('http://api.konnection.local');
 
   Restangular.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
@@ -56,7 +60,7 @@ app.run(function(Restangular) {
   });
 
   Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
-    var extractedData;
+    var extractedData = data;
     // .. to look for getList operations
     if (operation === "getList") {
       // .. and handle the data and meta data
@@ -73,6 +77,7 @@ app.run(function(Restangular) {
     else if (what !== 'auth') {
       extractedData = data[what];
     }
+
 
     return extractedData;
   });
