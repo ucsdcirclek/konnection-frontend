@@ -1,0 +1,76 @@
+<<<<<<< HEAD
+=======
+<div id="event">
+  <div id="navigator">
+    <h3>Monday 9/20</h3>
+    <ul>
+      <li>Test Event</li>
+      <li>Test Event</li>
+    </ul>
+
+    <h3>Tuesday 9/21</h3>
+    <ul>
+      <li>Test Event</li>
+    </ul>
+
+    <h3>Wednesday 9/22</h3>
+    <ul>
+      <li>Test Event</li>
+    </ul>
+
+    <h3>Thursday 9/23</h3>
+    <ul>
+      <li>Test Event</li>
+    </ul>
+
+    <h3>Friday 9/24</h3>
+    <ul>
+      <li>Test Event</li>
+    </ul>
+
+  </div>
+
+  <div id="viewport">
+
+    <div class="head">
+      <button>Signup</button>
+
+      <h2>{{ event.title }}</h2>
+
+      <p>{{ event.start_time | date : 'EEEE, MMMM d, y | h:mma - ' }}{{ event.end_time | date : 'h:mma' }}</p>
+
+
+    </div>
+
+    <div class="left">
+      <div class="description">
+        <p>{{ event.description }}</p>
+      </div>
+
+      <div class="registrations">
+        <h4>Who's going</h4>
+        <ul>
+          <li class="avatar small" ng-repeat="registration in event.registrations">
+            <img src="http://placehold.it/100x100">
+
+            <p class="name">{{ registration.name }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="right">
+      <div class="chair avatar large" ng-repeat="registration in event.registrations | filter:chair_status:1">
+        <img src="http://placehold.it/200x200">
+
+        <p class="name">{{ registration.name }}</p>
+
+        <p class="info">(555) 555-5555</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+>>>>>>> upstream/master
