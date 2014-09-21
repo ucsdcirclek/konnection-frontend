@@ -25,18 +25,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'AuthCtrl'
     })
     .state('event', {
-      url: '/event',
-      templateUrl: 'partials/event.html'
+      url: '/events/:id',
+      templateUrl: 'partials/events/event.html',
+      controller: 'EventsCtrl'
     })
     .state('events', {
       url: '/events',
-      templateUrl: 'partials/events/event.html',
-      controller: 'EventController'
+      templateUrl: 'partials/events/events.html',
+      controller: 'EventsCtrl'
     })
     .state('calendar', {
       url: '/calendar',
       templateUrl: 'partials/calendar/calendar.html',
-      controller: 'EventController'
+      controller: 'EventsCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
@@ -75,7 +76,12 @@ app.run(function(Restangular) {
       };
     }
     else if (what !== 'auth') {
-      extractedData = data[what];
+      for(var key in data) {
+        if(data.hasOwnProperty(key)) {
+          extractedData = data[key];
+          break;
+        }
+      }
     }
 
 
