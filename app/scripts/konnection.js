@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('konnection', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router']);
+var app = angular.module('konnection', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -38,6 +38,25 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/calendar',
       templateUrl: 'partials/calendar/calendar.html',
       controller: 'EventListCtrl'
+    })
+    .state('admin', {
+      abstract: true,
+      url: '/admin',
+      templateUrl: 'partials/admin/panel.html'
+    })
+    .state('admin.home', {
+      url: '',
+      templateUrl: 'partials/admin/home.html'
+    })
+    .state('admin.events', {
+      abstract: true,
+      url: '/events',
+      template: '<div ui-view></div>'
+    })
+    .state('admin.events.create', {
+      url: '/create',
+      templateUrl: 'partials/admin/events/create.html',
+      controller: 'EventCreateCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
