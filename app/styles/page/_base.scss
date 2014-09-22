@@ -16,3 +16,7 @@ body {
   @include span-columns(12);
   background: $cream;
 }
+
+.wrapper {
+  padding: 5%;
+}
