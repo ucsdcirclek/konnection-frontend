@@ -55,7 +55,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('admin.events.create', {
       url: '/create',
-      templateUrl: 'partials/admin/events/create.html'
+      templateUrl: 'partials/admin/events/create.html',
+      controller: 'EventCreateCtrl'
     });
 
   $urlRouterProvider.otherwise('/');

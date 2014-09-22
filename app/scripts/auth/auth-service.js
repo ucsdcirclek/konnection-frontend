@@ -35,7 +35,7 @@ app.factory('Auth', ['Restangular', '$window', 'Session', function(Restangular, 
       Session.create(result.token, result.user.id, roles);
 
       // Set headers
-      Restangular.setDefaultHeaders({'X-Auth-Token': $window.sessionStorage.token});
+      Restangular.setDefaultHeaders({'X-Auth-Token': result.token});
 
       console.log('Login successful');
 
