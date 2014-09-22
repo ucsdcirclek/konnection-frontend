@@ -39,8 +39,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/calendar/calendar.html',
       controller: 'EventListCtrl'
     })
-    .state('admin-events', {
-      url: '/admin/events',
+    .state('admin', {
+      abstract: true,
+      url: '/admin',
+      templateUrl: 'partials/admin/panel.html'
+    })
+    .state('admin.home', {
+      url: '',
+      templateUrl: 'partials/admin/home.html'
+    })
+    .state('admin.events', {
+      abstract: true,
+      url: '/events',
+      template: '<div ui-view></div>'
+    })
+    .state('admin.events.create', {
+      url: '/create',
       templateUrl: 'partials/admin/events/create.html'
     });
 
