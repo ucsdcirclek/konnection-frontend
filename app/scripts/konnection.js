@@ -57,6 +57,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/create',
       templateUrl: 'partials/admin/events/create.html',
       controller: 'EventCreateCtrl'
+    })
+    .state('profile', {
+    	url: '/profile',
+    	templateUrl: 'partials/profile/profile.html',
+    	controller: 'MainCtrl'
     });
 
   $urlRouterProvider.otherwise('/');
@@ -70,7 +75,7 @@ app.constant('USER_ROLES', {
 });
 
 app.run(function(Restangular) {
-  Restangular.setBaseUrl('http://api.konnection.local');
+  Restangular.setBaseUrl('http://api.ucsdcki.org');
 
   Restangular.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
