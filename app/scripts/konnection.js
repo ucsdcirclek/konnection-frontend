@@ -9,6 +9,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/main.html',
       controller: 'MainCtrl'
     })
+    .state('home.announcements' , {
+    	url: '',
+    	templateUrl: 'partials/main.announcements.html'
+    })
     .state('login', {
       abstract: true,
       url: '/login',
@@ -63,6 +67,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     	templateUrl: 'partials/profile/profile.html',
     	controller: 'MainCtrl'
     });
+    
+
 
   $urlRouterProvider.otherwise('/');
 });
