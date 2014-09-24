@@ -71,6 +71,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/create',
       templateUrl: 'partials/admin/posts/create.html',
       controller: 'PostCreateCtrl'
+    })
+    .state('profile', {
+    	url: '/profile',
+    	templateUrl: 'partials/profile/profile.html'
+    })
+    .state('home.posts', {
+    	url: '',
+    	templateUrl: 'partials/main.posts.html',
+    	controller: ''
     });
     
 
