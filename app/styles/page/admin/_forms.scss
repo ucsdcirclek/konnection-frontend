@@ -1,4 +1,4 @@
-#event-create
+.create-form
 {
   button {
     float: right;
@@ -7,5 +7,9 @@
   h2 {
     padding-bottom: .3em;
     border-bottom: 1px solid $light-gray;
+  }
+
+  .froala-element {
+    background-color: darken(white, 1%);
   }
 }

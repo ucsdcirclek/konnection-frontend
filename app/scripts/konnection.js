@@ -1,6 +1,10 @@
 'use strict';
 
-var app = angular.module('konnection', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate']);
+var app = angular.module('konnection',
+  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate', 'froala'])
+  .value('froalaConfig', {
+    inlineMode: false
+  });
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -8,11 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'partials/main.html',
       controller: 'MainCtrl'
-    })
-    .state('home.announcements' , {
-    	url: '',
-    	templateUrl: 'partials/main.announcements.html'
-    })
+    })    
     .state('login', {
       abstract: true,
       url: '/login',
@@ -62,10 +62,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/admin/events/create.html',
       controller: 'EventCreateCtrl'
     })
-    .state('profile', {
-    	url: '/profile',
-    	templateUrl: 'partials/profile/profile.html',
-    	controller: 'MainCtrl'
+    .state('admin.posts', {
+      abstract: true,
+      url: '/posts',
+      template: '<div ui-view></div>'
+    })
+    .state('admin.posts.create', {
+      url: '/create',
+      templateUrl: 'partials/admin/posts/create.html',
+      controller: 'PostCreateCtrl'
     });
     
 
@@ -106,8 +111,8 @@ app.run(function(Restangular) {
       };
     }
     else if (what !== 'auth') {
-      for(var key in data) {
-        if(data.hasOwnProperty(key)) {
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
           extractedData = data[key];
           break;
         }

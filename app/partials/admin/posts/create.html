@@ -1,0 +1,16 @@
+<div class="wrapper create-form">
+  <h2>Create a Post</h2>
+  <br/>
+
+  <form ng-submit="create()">
+    <label for="title">Title</label>
+    <input type="text" name="title" ng-model="title" placeholder="Title">
+
+    <label for="body">Body</label>
+    <textarea froala name="body" ng-model="body"></textarea>
+
+    <br />
+
+    <button type="submit">Create</button>
+  </form>
+</div>
