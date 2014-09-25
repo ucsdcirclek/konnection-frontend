@@ -13,7 +13,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/',
 		templateUrl: 'partials/main.html',
 		controller: 'MainCtrl'
-	})    
+	})
+	.state('home.posts', {
+		url: '',
+		templateUrl: 'partials/main.posts.html'
+	})
+	.state('home.events', {
+		url: '/yo',
+		templateUrl: 'partials/events/events.html',
+		controller: 'EventListCtrl'
+	})
 	.state('login', {
 		abstract: true,
 		url: '/login',
@@ -77,11 +86,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/profile',
 		templateUrl: 'partials/profile/profile.html'
 	})
-	.state('home.posts', {
-		url: '',
-		templateUrl: 'partials/main.posts.html',
-	});
-	
 
 
 	$urlRouterProvider.otherwise('/');
