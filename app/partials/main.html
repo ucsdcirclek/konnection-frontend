@@ -4,16 +4,24 @@
 
 <div id="content">
   <div id="main"> 
-    <strong><a ui-sref="home.posts">Announcements</a></strong>
-    <strong><a ui-sref="home.events">Upcoming Events</a></strong>
-    <div ui-view></div> 	
-    
+    <a ui-sref="home.posts">Announcements</a>
+    <a ui-sref="home.events">Upcoming Events</a>
+    <div ui-view></div> 
+  </div>
+
   <div id="sidebar">
     <div ng-if="currentUser">
       <h2>Welcome {{ currentUser.first_name }}!</h2>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla hendrerit dui eget mi blandit, in maximus metus
         condimentum.</p>
+      </div>
+    </div>
+    <div ng-if="!currentUser">
+      <br />
+      <h5><strong>Log in, or register now!</strong></h5>
+      <br />
+      <button><a class="button-text" href="index.html#/login">Login</button>
+      <button><a class="button-text" href="index.html#/login/register">Register</button>
     </div>
   </div>
-</div>

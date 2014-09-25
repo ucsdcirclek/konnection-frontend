@@ -19,8 +19,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'partials/main.posts.html'
 	})
 	.state('home.events', {
-		url: '/yo',
-		templateUrl: 'partials/events/events.html',
+		url: 'upcoming',
+		templateUrl: 'partials/calendar/calendar.html',
 		controller: 'EventListCtrl'
 	})
 	.state('login', {
