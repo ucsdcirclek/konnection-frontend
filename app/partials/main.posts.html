@@ -1,9 +1,10 @@
 <p>
 	<ul>
 		<li ng-repeat="post in posts">
-			<h5>{{post.title}}</h5>	
-			<i>{{post.created_at | date:"EEEE, MMMM d"}}</i>
-			<p>{{post.content}}</p>		
+			<h5>{{post.title}}</h5>				
+			<p>{{post.content}}</p>
+			<i>posted {{post.created_at | date:"EEEE, MMMM d"}}</i>
+			<br /><br />
 		</li>
 	</ul>
 </p>

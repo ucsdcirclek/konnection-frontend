@@ -40,7 +40,7 @@ app
         Auth.login(credentials, $scope.remember).then(
           function(user) {
             $scope.setCurrentUser(user);
-            $state.go('home');
+            $state.go('home.posts');
           }
         );
       };
