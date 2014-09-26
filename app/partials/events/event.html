@@ -36,7 +36,7 @@
 
       <h2>{{ event.title }}</h2>
 
-      <p>{{ event.start_time | date : 'EEEE, MMMM d, y | h:mma - ' }}{{ event.end_time | date : 'h:mma' }}</p>
+      <p>{{ event.start_time | date : 'EEEE, MMMM d, y | h:mma to ' | lowercase }}{{ event.end_time | date : 'h:mma' | lowercase}}</p>
 
 
     </div>

@@ -85,7 +85,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	.state('profile', {
 		url: '/profile',
 		templateUrl: 'partials/profile/profile.html',
-		controller: 'MainCtrl'
 	})
 
 
