@@ -102,6 +102,113 @@ app.constant('USER_ROLES', {
   member: 3
 });
 
+app.constant('AUTH_EVENTS', {
+  loginSuccess: 'auth-login-success',
+  loginFailed: 'auth-login-failed',
+  logoutSuccess: 'auth-logout-success',
+  sessionTimeout: 'auth-session-timeout',
+  notAuthenticated: 'auth-not-authenticated',
+  notAuthorized: 'auth-not-authorized'
+});
+
+app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
+            function($stateProvider, $urlRouterProvider, USER_ROLES) {
+              $stateProvider
+                .state('home', {
+                  abstract: true,
+                  url: '/',
+                  templateUrl: 'partials/main.html',
+                  controller: 'MainCtrl'
+                })
+                .state('home.posts', {
+                  url: '',
+                  templateUrl: 'partials/main.posts.html',
+                  controller: 'PostListCtrl'
+                })
+                .state('home.events', {
+                  url: 'events',
+                  templateUrl: 'partials/events/events.html',
+                  controller: 'EventListCtrl'
+                })
+                .state('home.forms', {
+                  url: 'forms',
+                  templateUrl: 'partials/main.forms.html'
+                })
+                .state('login', {
+                  abstract: true,
+                  url: '/login',
+                  templateUrl: 'partials/login/login.html',
+                  controller: 'AuthCtrl'
+                })
+                .state('login.info', {
+                  url: '',
+                  templateUrl: 'partials/login/login.info.html'
+                })
+                .state('login.register', {
+                  url: '/register',
+                  templateUrl: 'partials/login/login.register.html',
+                  controller: 'AuthCtrl'
+                })
+                .state('event', {
+                  url: '/events/:id',
+                  templateUrl: 'partials/events/event.html',
+                  controller: 'EventItemCtrl'
+                })
+                .state('calendar', {
+                  url: '/calendar',
+                  templateUrl: 'partials/calendar/calendar.html',
+                  controller: 'EventListCtrl'
+                })
+                .state('settings', {
+                  url: '/settings',
+                  templateUrl: 'partials/settings/settings.html',
+                  controller: 'UserUpdateCtrl',
+                  data: {
+                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.officer, USER_ROLES.member]
+                  }
+                })
+                .state('admin', {
+                  abstract: true,
+                  url: '/admin',
+                  templateUrl: 'partials/admin/panel.html',
+                  data: {
+                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.officer]
+                  }
+                })
+                .state('admin.home', {
+                  url: '',
+                  templateUrl: 'partials/admin/home.html'
+                })
+                .state('admin.events', {
+                  abstract: true,
+                  url: '/events',
+                  template: '<div ui-view></div>'
+                })
+                .state('admin.events.create', {
+                  url: '/create',
+                  templateUrl: 'partials/admin/events/create.html',
+                  controller: 'EventCreateCtrl'
+                })
+                .state('admin.posts', {
+                  abstract: true,
+                  url: '/posts',
+                  template: '<div ui-view></div>'
+                })
+                .state('admin.posts.create', {
+                  url: '/create',
+                  templateUrl: 'partials/admin/posts/create.html',
+                  controller: 'PostCreateCtrl'
+                })
+                .state('profile', {
+                  url: '/profile',
+                  templateUrl: 'partials/profile/profile.html',
+                  controller: 'MainCtrl'
+                });
+
+
+              $urlRouterProvider.otherwise('/');
+            }]);
+
 app.run(function(Restangular) {
   Restangular.setBaseUrl('http://dev.ucsdcki.org/api');
 
@@ -145,3 +252,20 @@ app.run(function(Restangular) {
   }
 
 });
+
+app.run(['$rootScope', 'AUTH_EVENTS', 'Auth', function($rootScope, AUTH_EVENTS, Auth) {
+  $rootScope.$on('$stateChangeStart', function(event, next) {
+    var authorizedRoles = next.data.authorizedRoles;
+    if (!Auth.isAuthorized(authorizedRoles)) {
+      event.preventDefault();
+      if (Auth.isAuthenticated()) {
+        // user is not allowed
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+      }
+      else {
+        // user is not logged in
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+      }
+    }
+  });
+}]);
