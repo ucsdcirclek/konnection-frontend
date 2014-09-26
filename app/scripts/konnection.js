@@ -164,19 +164,24 @@ app.run(function(Restangular) {
 
 });
 
-app.run(['$rootScope', 'AUTH_EVENTS', 'Auth', function($rootScope, AUTH_EVENTS, Auth) {
+app.run(['$rootScope', 'AUTH_EVENTS', 'Auth', 'USER_ROLES', function($rootScope, AUTH_EVENTS, Auth, USER_ROLES) {
   $rootScope.$on('$stateChangeStart', function(event, next) {
-    var authorizedRoles = next.data.authorizedRoles;
-    if (!Auth.isAuthorized(authorizedRoles)) {
-      event.preventDefault();
-      if (Auth.isAuthenticated()) {
-        // user is not allowed
-        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+
+    try {
+      var authorizedRoles = next.data.authorizedRoles;
+      if (!Auth.isAuthorized(authorizedRoles)) {
+        event.preventDefault();
+        if (Auth.isAuthenticated()) {
+          // user is not allowed
+          $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+        }
+        else {
+          // user is not logged in
+          $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+        }
       }
-      else {
-        // user is not logged in
-        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-      }
+    } catch (e) {
+
     }
   });
 }]);
