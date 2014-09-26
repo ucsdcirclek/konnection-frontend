@@ -71,6 +71,10 @@
   </div>
 </header>
 
+<div id="admin-link" ng-if="isAuthorized(userRoles.officer)">
+  <a ui-sref="admin.home">Admin</a>
+</div>
+
 <div ui-view id="container"></div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
