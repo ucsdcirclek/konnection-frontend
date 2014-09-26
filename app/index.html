@@ -71,6 +71,10 @@
   </div>
 </header>
 
+<div id="admin-link" ng-if="isAuthorized(userRoles.officer)">
+  <a ui-sref="admin.home">Admin</a>
+</div>
+
 <div ui-view id="container"></div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -127,6 +131,7 @@
 <script src="scripts/posts/posts-ctrl.js"></script>
 <script src="scripts/posts/announcements-ctrl.js"></script>
 <script src="scripts/posts/announcements-service.js"></script>
+<script src="scripts/users/users-ctrl.js"></script>
 <!-- inject:partials -->
 <!-- endinject -->
 <!-- endbuild -->

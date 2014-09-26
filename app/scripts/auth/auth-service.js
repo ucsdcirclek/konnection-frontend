@@ -70,7 +70,7 @@ app.factory('Auth', ['Restangular', '$window', 'Session', function(Restangular, 
       authorizedRoles = [authorizedRoles];
     }
     return (authService.isAuthenticated() &&
-      authorizedRoles.indexOf(Session.userRole) !== -1);
+    authorizedRoles.length === _.intersection(authorizedRoles, Session.userRole).length);
   };
 
 
