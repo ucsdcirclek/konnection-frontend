@@ -2,7 +2,7 @@
 <html class="no-js" ng-app="konnection">
 <head>
   <meta charset="utf-8">
-  <title>UCSD Circle K | Home</title>
+  <title>UCSD Circle K</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -41,7 +41,7 @@
     <div class="nav">
       <div id="corner-left"></div>
       <ul id="navigation-menu">
-        <li class="nav-link"><a ui-sref="home">home</a></li>
+        <li class="nav-link"><a ui-sref="home.posts">home</a></li>
         <li class="nav-link more"><a href="javascript:void(0)">about</a>
           <ul class="submenu">
             <li><a href="javascript:void(0)">Circle K</a></li>
@@ -63,7 +63,7 @@
       <li class="nav-link"><a href="javascript:void(0)">multimedia</a></li>
       <li class="nav-link"><a href="javascript:void(0)">contact</a></li>
       <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
-      <li ng-if="currentUser" class="nav-link">profile</li>
+      <li ng-if="currentUser" class="nav-link"><a ui-sref="profile">profile</a></li>
       </ul>
       <div id="corner-right"></div>
     </div>
@@ -129,6 +129,8 @@
 <script src="scripts/events/events-service.js"></script>
 <script src="scripts/events/events-ctrl.js"></script>
 <script src="scripts/posts/posts-ctrl.js"></script>
+<script src="scripts/posts/announcements-ctrl.js"></script>
+<script src="scripts/posts/announcements-service.js"></script>
 <!-- inject:partials -->
 <!-- endinject -->
 <!-- endbuild -->

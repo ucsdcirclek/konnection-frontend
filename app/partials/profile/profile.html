@@ -1,0 +1,42 @@
+<div>
+	<h3>{{currentUser.first_name}}'s Profile</h3>
+	<p>
+		<h5>About</h5>		
+		<img src="http://upload.wikimedia.org/wikipedia/commons/2/27/Square_200x200.svg"><br />
+		<ul>
+			<li>
+				<form ng-submit="">
+					<a ng-click="updateName = !updateName">Edit name: </a>
+					<strong ng-hide="updateName">{{currentUser.first_name + " " + currentUser.last_name}}</strong>
+					<input placeholder="First name" ng-show="updateName" type="text"><input placeholder="Last name" type="text" ng-show="updateName">
+					<input ng-show="updateName" class="button" type="submit">
+				</form>				
+			</li>
+			<li>
+				<form ng-submit="">
+					<a ng-click="updateUsername = !updateUsername">Edit username: </a>
+					<strong ng-hide="updateUsername">{{currentUser.username}}</strong>
+					<input placeholder="Username" ng-show="updateUsername" type="text">
+					<input ng-show="updateUsername" class="button" type="submit">
+				</form>				
+			</li>			
+			<li>
+				<form ng-submit="">
+					<a ng-click="updateEmail = !updateEmail">Change email: </a>
+					<strong ng-hide="updateEmail">{{currentUser.email}}</strong>
+					<input placeholder="Email" ng-show="updateEmail" type="text">
+					<input ng-show="updateEmail" class="button" type="submit">
+				</form>				
+			</li><br />
+			<li>
+				<form ng-submit="">
+					<a ng-click="updatePassword  = !updatePassword ">Change password </a>
+					<input ng-show="updatePassword" type="password" placeholder="Old Password">					
+					<input ng-show="updatePassword" type="password" placeholder="New Password">					
+					<input ng-show="updatePassword" type="password" placeholder="Confirm Password">					
+					<input ng-show="updatePassword " class="button" type="submit">
+				</form>
+			</li>
+		</ul>		
+	</p>
+</div>

@@ -4,7 +4,7 @@
       <h3>Login</h3>
       <hr />
       <label for="username">Username</label>
-      <input type="text" name="username" placeholder="username" ng-model="auth.username">
+      <input autofocus type="text" name="username" placeholder="username" ng-model="auth.username">
       <label for="password">Password</label>
       <input type="password" name="password" placeholder="password" ng-model="auth.password">
       <input type="checkbox" ng-model="remember">Remember me<br />
@@ -14,6 +14,4 @@
   </div>
 
   <div ui-view id="register"></div>
-
-
 </div>
