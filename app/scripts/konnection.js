@@ -7,7 +7,6 @@ var app = angular.module('konnection',
   });
 
 app.config(function($stateProvider, $urlRouterProvider) {
-<<<<<<< HEAD
 	$stateProvider
 	.state('home', {
 		abstract: true,
@@ -87,94 +86,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/profile',
 		templateUrl: 'partials/profile/profile.html',
 	})
-=======
-  $stateProvider
-    .state('home', {
-      abstract: true,
-      url: '/',
-      templateUrl: 'partials/main.html',
-      controller: 'MainCtrl'
-    })
-    .state('home.posts', {
-      url: '',
-      templateUrl: 'partials/main.posts.html',
-      controller: 'PostListCtrl'
-    })
-    .state('home.events', {
-      url: 'events',
-      templateUrl: 'partials/events/events.html',
-      controller: 'EventListCtrl'
-    })
-    .state('home.forms', {
-      url: 'forms',
-      templateUrl: 'partials/main.forms.html'
-    })
-    .state('login', {
-      abstract: true,
-      url: '/login',
-      templateUrl: 'partials/login/login.html',
-      controller: 'AuthCtrl'
-    })
-    .state('login.info', {
-      url: '',
-      templateUrl: 'partials/login/login.info.html'
-    })
-    .state('login.register', {
-      url: '/register',
-      templateUrl: 'partials/login/login.register.html',
-      controller: 'AuthCtrl'
-    })
-    .state('event', {
-      url: '/events/:id',
-      templateUrl: 'partials/events/event.html',
-      controller: 'EventItemCtrl'
-    })
-    .state('calendar', {
-      url: '/calendar',
-      templateUrl: 'partials/calendar/calendar.html',
-      controller: 'EventListCtrl'
-    })
-    .state('settings', {
-      url: '/settings',
-      templateUrl: 'partials/settings/settings.html',
-      controller: 'UserUpdateCtrl'
-    })
-    .state('admin', {
-      abstract: true,
-      url: '/admin',
-      templateUrl: 'partials/admin/panel.html'
-    })
-    .state('admin.home', {
-      url: '',
-      templateUrl: 'partials/admin/home.html'
-    })
-    .state('admin.events', {
-      abstract: true,
-      url: '/events',
-      template: '<div ui-view></div>'
-    })
-    .state('admin.events.create', {
-      url: '/create',
-      templateUrl: 'partials/admin/events/create.html',
-      controller: 'EventCreateCtrl'
-    })
-    .state('admin.posts', {
-      abstract: true,
-      url: '/posts',
-      template: '<div ui-view></div>'
-    })
-    .state('admin.posts.create', {
-      url: '/create',
-      templateUrl: 'partials/admin/posts/create.html',
-      controller: 'PostCreateCtrl'
-    })
-    .state('profile', {
-      url: '/profile',
-      templateUrl: 'partials/profile/profile.html',
-      controller: 'MainCtrl'
-    })
->>>>>>> upstream/master
-
 
   $urlRouterProvider.otherwise('/');
 });
@@ -187,7 +98,7 @@ app.constant('USER_ROLES', {
 });
 
 app.run(function(Restangular) {
-  Restangular.setBaseUrl('/api');
+  Restangular.setBaseUrl('http://dev.ucsdcki.org/api');
 
   Restangular.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
