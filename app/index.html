@@ -41,7 +41,7 @@
     <div class="nav">
       <div id="corner-left"></div>
       <ul id="navigation-menu">
-        <li class="nav-link"><a href="/">home</a></li>
+        <li class="nav-link"><a ui-sref="home.posts">home</a></li>
         <li class="nav-link more"><a href="javascript:void(0)">about</a>
           <ul class="submenu">
             <li><a href="javascript:void(0)">Circle K</a></li>
@@ -63,7 +63,7 @@
       <li class="nav-link"><a href="javascript:void(0)">multimedia</a></li>
       <li class="nav-link"><a href="javascript:void(0)">contact</a></li>
       <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
-      <li ng-if="currentUser" class="nav-link"><a href="index.html#/profile">profile</a></li>
+      <li ng-if="currentUser" class="nav-link"><a ui-sref="profile">profile</a></li>
       </ul>
       <div id="corner-right"></div>
     </div>
