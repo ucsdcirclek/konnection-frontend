@@ -24,6 +24,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'partials/events/events.html',
 		controller: 'EventListCtrl'
 	})
+	.state('home.forms', {
+		url: 'forms',
+		templateUrl: 'partials/main.forms.html'
+	})
 	.state('login', {
 		abstract: true,
 		url: '/login',
