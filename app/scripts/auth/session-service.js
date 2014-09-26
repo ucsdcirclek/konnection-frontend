@@ -1,3 +1,5 @@
+'use strict';
+
 app.service('Session', function() {
   this.create = function(token, userId, userRole) {
     this.id = token;
@@ -10,4 +12,4 @@ app.service('Session', function() {
     this.userRole = null;
   };
   return this;
-})
+});
