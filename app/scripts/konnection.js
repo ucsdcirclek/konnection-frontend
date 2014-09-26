@@ -16,11 +16,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	})
 	.state('home.posts', {
 		url: '',
-		templateUrl: 'partials/main.posts.html'
+		templateUrl: 'partials/main.posts.html',
+		controller: 'PostListCtrl'
 	})
 	.state('home.events', {
-		url: 'upcoming',
-		templateUrl: 'partials/calendar/calendar.html',
+		url: 'events',
+		templateUrl: 'partials/events/events.html',
 		controller: 'EventListCtrl'
 	})
 	.state('login', {
@@ -42,11 +43,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		url: '/events/:id',
 		templateUrl: 'partials/events/event.html',
 		controller: 'EventItemCtrl'
-	})
-	.state('events', {
-		url: '/events',
-		templateUrl: 'partials/events/events.html',
-		controller: 'EventListCtrl'
 	})
 	.state('calendar', {
 		url: '/calendar',
