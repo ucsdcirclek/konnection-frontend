@@ -53,6 +53,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl: 'partials/calendar/calendar.html',
 		controller: 'EventListCtrl'
 	})
+	.state('settings', {
+		url: '/settings',
+		templateUrl: 'partials/settings/settings.html',
+		controller: 'UserUpdateCtrl'
+	})
 	.state('admin', {
 		abstract: true,
 		url: '/admin',
