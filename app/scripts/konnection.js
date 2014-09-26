@@ -95,7 +95,7 @@ app.constant('USER_ROLES', {
 });
 
 app.run(function(Restangular) {
-	Restangular.setBaseUrl('http://api.ucsdcki.org');
+	Restangular.setBaseUrl('http://dev.ucsdcki.org/api');
 
 	Restangular.setRequestInterceptor(function(elem, operation) {
 		if (operation === "remove") {

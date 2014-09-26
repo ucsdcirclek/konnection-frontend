@@ -5,6 +5,6 @@ app.controller('PostListCtrl',
     Posts.getList().then(function(posts) {
       $scope.posts = posts;
     }, function() {
-      console.log("Error loading events.");
+      console.log("Error loading posts.");
     });
   }]);
