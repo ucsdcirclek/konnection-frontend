@@ -2,7 +2,7 @@
 
 app
   .controller('AuthCtrl',
-    ['$window', '$scope', 'Restangular', 'Auth', '$state', function($window, $scope, Restangular, Auth, $state) {
+    ['$window', '$scope', 'Restangular', 'Auth', '$state', '$rootScope', 'AUTH_EVENTS', function($window, $scope, Restangular, Auth, $state, $rootScope, AUTH_EVENTS) {
       $scope.register = function() {
         if ($window.localStorage.token || $window.sessionStorage.token) {
           console.log('Already logged in!');
@@ -39,8 +39,11 @@ app
 
         Auth.login(credentials, $scope.remember).then(
           function(user) {
+            $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
             $scope.setCurrentUser(user);
             $state.go('home.posts');
+          }, function () {
+            $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
           }
         );
       };
