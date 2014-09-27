@@ -115,22 +115,22 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 			templateUrl: 'partials/profile/profile.html',
 			controller: 'MainCtrl'
 		})
-		.state('about', {
+		.state('circlek', {
 			url: '/about',
-			templateUrl: 'partials/about/about.html',
+			templateUrl: 'partials/about/circlek/circlek.html',
 			abstract: true			
 		})
-		.state('about.general', {
+		.state('circlek.general', {
 			url: '',
-			templateUrl: 'partials/about/about.general.html'
+			templateUrl: 'partials/about/circlek/circlek.general.html'
 		})
-		.state('about.history', {
+		.state('circlek.history', {
 			url: '/history',
-			templateUrl: 'partials/about/about.history.html'
+			templateUrl: 'partials/about/circlek/circlek.history.html'
 		})
-		.state('about.structure', {
+		.state('circlek.structure', {
 			url: '/structure',
-			templateUrl: 'partials/about/about.structure.html'
+			templateUrl: 'partials/about/circlek/circlek.structure.html'
 		});
 
 
