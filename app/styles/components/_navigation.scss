@@ -143,7 +143,7 @@ header.navigation {
 
     > ul {
       font-family: $serif;
-      padding-top: 1em;
+//      padding-top: 1em;
     }
 
     a {
@@ -152,7 +152,7 @@ header.navigation {
     }
 
     > a {
-      padding-right: 0.6em;
+      padding-right: 0;
       color: $brown;
     }
 
@@ -243,7 +243,7 @@ header.navigation {
 #corner-left {
     position:absolute;
     background:url("../images/ScrollSide.svg") no-repeat 0 0;
-    top:-9px;
+    top:-9.5px;
     left:-243px;
     width:110px;
     height:150px;
@@ -252,7 +252,7 @@ header.navigation {
 #corner-right {
     position:absolute;
     background:url("../images/ScrollSideR.svg") no-repeat 0 0;
-    top: -9px;
+    top: -9.5px;
     right:-102px;
     width:110px;
     height:150px;
