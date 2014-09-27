@@ -1,6 +1,6 @@
 <p>
 	<ul>
-		<li ng-repeat="post in posts">
+		<li ng-repeat="post in posts | limitTo:6">
 			<h5>{{post.title}}</h5>				
 			<p>{{post.content}}</p>
 			<i>posted {{post.created_at | date:"EEEE, MMMM d"}}</i>
