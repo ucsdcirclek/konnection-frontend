@@ -50,8 +50,8 @@
             <li><a ui-sref="club.information">Club</a></li>
         </li>
       </ul>
-      <li class="nav-link"><a href="javascript:void(0)">calendar</a></li>
-      <li class="nav-link"><a href="javascript:void(0)">members</a></li>
+      <li class="nav-link"><a ui-sref="calendar">calendar</a></li>
+      <li class="nav-link"><a ui-sref="members">members</a></li>
       <li class="nav-link more"><a href="javascript:void(0)">committees</a>
         <ul class="submenu">
           <li><a href="javascript:void(0)">Fundraising</a></li>
@@ -61,7 +61,7 @@
       </li>
       </ul>
       <li class="nav-link"><a href="javascript:void(0)">multimedia</a></li>
-      <li class="nav-link"><a href="javascript:void(0)">contact</a></li>
+      <li class="nav-link"><a ui-sref="contact">contact</a></li>
       <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
       <li ng-if="currentUser" class="nav-link"><a ui-sref="profile">profile</a></li>
       </ul>

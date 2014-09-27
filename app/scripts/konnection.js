@@ -67,7 +67,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 		})
 		.state('calendar', {
 			url: '/calendar',
-			templateUrl: 'partials/calendar/calendar.html',
+			templateUrl: 'partials/unavailable.html',
 			controller: 'EventListCtrl'
 		})
 		.state('settings', {
@@ -152,6 +152,14 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 		.state('division', {
 			url: '/division',
 			templateUrl: 'partials/about/division/division.html'
+		})
+		.state('members', {
+			url: '/members',
+			templateUrl: 'partials/unavailable.html'
+		})
+		.state('contact', {
+			url: '/contact',
+			templateUrl: 'partials/contact/contact.html'
 		});
 
 
