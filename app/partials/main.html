@@ -14,24 +14,13 @@
     <div ng-if="currentUser">
       <h2>Welcome, {{ currentUser.first_name }}!</h2>
       <ul>
-        <li><a ui-sref="profile">View/edit profile</a></li>
+        <li><a ui-sref="profile">View profile</a></li>
       </ul>
     </div>
     <div ng-if="!currentUser">
     <h2>Welcome!</h2>
       <p>
         If you have account, please <a href="index.html#/login">login</a>. If you do not, you are invited to <a href="index.html#/login/register">register</a> now!
-      </p>
-      
+      </p>      
     </div>
-
-    <!--<div ng-if="!currentUser">
-      <br />
-      <h5><strong>Log in, or register now!</strong></h5>
-      <br />
-      <button><a class="button-text" href="index.html#/login">Login</button>
-      <button><a class="button-text" href="index.html#/login/register">Register</button>
-    </div>
-  </div>-->
-
 </div>

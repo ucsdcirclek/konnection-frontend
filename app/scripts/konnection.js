@@ -131,6 +131,27 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 		.state('circlek.structure', {
 			url: '/structure',
 			templateUrl: 'partials/about/circlek/circlek.structure.html'
+		})
+		.state('club', {
+			abstract: true,
+			url: '/club',
+			templateUrl: 'partials/about/club/club.html'
+		})
+		.state('club.information', {
+			url: '',
+			templateUrl: 'partials/about/club/club.information.html'
+		})
+		.state('club.causes', {
+			url: '/causes',
+			templateUrl: 'partials/about/club/club.causes.html'
+		})
+		.state('district', {
+			url: '/district',
+			templateUrl:'partials/about/district/district.html'
+		})
+		.state('division', {
+			url: '/division',
+			templateUrl: 'partials/about/division/division.html'
 		});
 
 
