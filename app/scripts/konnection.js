@@ -114,6 +114,23 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
 			url: '/profile',
 			templateUrl: 'partials/profile/profile.html',
 			controller: 'MainCtrl'
+		})
+		.state('about', {
+			url: '/about',
+			templateUrl: 'partials/about/about.html',
+			abstract: true			
+		})
+		.state('about.general', {
+			url: '',
+			templateUrl: 'partials/about/about.general.html'
+		})
+		.state('about.history', {
+			url: '/history',
+			templateUrl: 'partials/about/about.history.html'
+		})
+		.state('about.structure', {
+			url: '/structure',
+			templateUrl: 'partials/about/about.structure.html'
 		});
 
 
