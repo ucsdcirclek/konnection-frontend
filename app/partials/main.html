@@ -1,8 +1,21 @@
+
 <img src="images/mockheader2.jpg" width="100%" height="100%">
+<link rel="stylesheet" type="text/css" href="../styles/slideshow/slideshow.css">
+<script type="text/javascript" src="../scripts/slideshow.js"></script>
 
-<img src="images/mockslider.jpg" width="100%" height="100%">
+<div id="slideshow">
+ <div>
+   <img class="photo" src="http://www.greenhdwallpaper.com/wp-content/uploads/2014/08/forest-wallpaper-high-resolution-5.jpg">
+ </div>
+ <div>
+   <img class="photo" src="http://www.widewallpapers.net/mod/nature/forest/1920x1080/forest-wallpaper-1920x1080-097.jpg">
+ </div>
+ <div>
+   <img class="photo" src="https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/1540508_10152625732286322_3809301974589929982_o.jpg">
+ </div>
+</div>
 
-<div id="content">
+<div class="wrapper" id="content">
   <div id="main"> 
     <a ui-sref="home.posts"><button>Announcements</button></a>
     <a ui-sref="home.events"><button>Upcoming Events</button></a>
@@ -10,7 +23,7 @@
     <div ui-view></div> 
   </div>
 
-  <div id="sidebar">
+  <p id="sidebar">
     <div ng-if="currentUser">
       <h2>Welcome, {{ currentUser.first_name }}!</h2>
       <ul>
@@ -18,9 +31,9 @@
       </ul>
     </div>
     <div ng-if="!currentUser">
-    <h2>Welcome!</h2>
+      <h2>Welcome!</h2>
       <p>
         If you have account, please <a href="index.html#/login">login</a>. If you do not, you are invited to <a href="index.html#/login/register">register</a> now!
       </p>      
-    </div>
-</div>
+    </p>
+  </div>
