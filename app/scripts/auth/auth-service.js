@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Auth', ['Restangular', '$window', 'Session', function(Restangular, $window, Session) {
+app.factory('Auth', ['Restangular', '$window', 'Session', '$rootScope', function(Restangular, $window, Session, $rootScope) {
 
   var authService = {};
 
@@ -18,7 +18,6 @@ app.factory('Auth', ['Restangular', '$window', 'Session', function(Restangular, 
       localStorage.clear();
       sessionStorage.clear();
 
-      console.log(result);
       // Handle remember me
       if (remember) {
         $window.localStorage.token = result.token;
@@ -37,7 +36,7 @@ app.factory('Auth', ['Restangular', '$window', 'Session', function(Restangular, 
       // Set headers
       Restangular.setDefaultHeaders({'X-Auth-Token': result.token});
 
-      console.log('Login successful');
+      $rootScope.setCurrentUser(result.user);
 
       return result.user;
     }, function() {
