@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('konnection',
-	['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate', 'froala'])
+	['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate', 'froala', 'angular-carousel'])
 .value('froalaConfig', {
 	inlineMode: false
 });
