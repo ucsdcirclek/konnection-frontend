@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
   <link rel="stylesheet" href="bower_components/FroalaWysiwygEditor/css/froala_editor.min.css" />
   <link rel="stylesheet" href="bower_components/FroalaWysiwygEditor/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -44,13 +45,19 @@
         <li class="nav-link"><a ui-sref="home.posts">home</a></li>
         <li class="nav-link more"><a href="javascript:void(0)">about</a>
           <ul class="submenu">
-            <li><a href="javascript:void(0)">Circle K</a></li>
-            <li><a href="javascript:void(0)">District</a></li>
-            <li><a href="javascript:void(0)">Division</a></li>
-            <li><a href="javascript:void(0)">Club</a></li>
+            <li><a ui-sref="circlek.general">Circle K</a></li>
+            <li><a ui-sref="district">District</a></li>
+            <li><a ui-sref="division">Division</a></li>
+            <li><a ui-sref="club.information">Club</a></li>
         </li>
       </ul>
+<<<<<<< HEAD
+      <li class="nav-link"><a ui-sref="calendar">calendar</a></li>
+      <li class="nav-link"><a ui-sref="members">members</a></li>
+      <li class="nav-link more"><a href="javascript:void(0)">committees</a>
+=======
       <li class="nav-link"><a href="javascript:void(0)">events</a></li>
+>>>>>>> upstream/master
         <ul class="submenu">
           <li><a href="javascript:void(0)">Fundraising</a></li>
           <li><a href="javascript:void(0)">KFam</a></li>
@@ -58,8 +65,13 @@
           <li><a href="javascript:void(0)">PR</a></li>
       </li>
       </ul>
+<<<<<<< HEAD
+      <li class="nav-link"><a href="javascript:void(0)">multimedia</a></li>
+      <li class="nav-link"><a ui-sref="contact">contact</a></li>
+=======
       <li class="nav-link"><a href="javascript:void(0)">media</a></li>
       <li class="nav-link"><a href="javascript:void(0)">contact</a></li>
+>>>>>>> upstream/master
       <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
       <li ng-if="currentUser" class="nav-link"><a ui-sref="profile">profile</a></li>
       </ul>
@@ -74,6 +86,13 @@
 </div>
 
 <div ui-view id="container"></div>
+<footer style="color: rgb(94, 73, 80); text-align: center">
+  <img src="http://ucsdcki.org/images/icons/logo.png">
+  <img src="http://ucsdcki.org/images/icons/logo2.png">
+  <img src="http://ucsdcki.org/images/icons/logo3.png"><br />
+  © 2014-2015 UCSD Circle K International. All Rights Reserved. 
+
+</footer>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
@@ -113,6 +132,7 @@
 <script src="bower_components/FroalaWysiwygEditor/js/plugins/font_family.min.js"></script>
 <script src="bower_components/FroalaWysiwygEditor/js/plugins/font_size.min.js"></script>
 <script src="bower_components/angular-froala/src/angular-froala.js"></script>
+<script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
 <!-- endbower -->
 <script src="bower_components/angular-froala/src/froala-sanitize.js"></script>
 <!-- endbuild -->

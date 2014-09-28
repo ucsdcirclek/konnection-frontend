@@ -1,12 +1,12 @@
-<div id="settings" class="wrapper">
+<div ng-if="currentUser" id="settings" class="wrapper">
   <h2>Account Settings</h2>
   <form ng-submit="update()">
 
     <label for="username">Username</label>
-    <input type="text" name="username" ng-model="user.username" disabled>
+    <input type="text" name="username" ng-model="user.username" value="{{currentUser.username}}" disabled>
 
     <label for="email">Email</label>
-    <input type="email" name="email" ng-model="user.email">
+    <input type="email" name="email" ng-model="user.email" value="{{currentUser.email}}">
 
     <label for="password">New Password</label>
     <input type="password" name="password" ng-model="user.password">
@@ -15,11 +15,20 @@
     <input type="password" name="password_confirmation" ng-model="user.password_confirmation">
 
     <label for="first_name">First Name</label>
-    <input type="text" name="first_name" ng-model="user.first_name">
+    <input type="text" name="first_name" ng-model="user.first_name" value="{{currentUser.first_name}}">
 
     <label for="last_name">Last Name</label>
-    <input type="text" name="last_name" ng-model="user.last_name">
+    <input type="text" name="last_name" ng-model="user.last_name" value="{{currentUser.last_name}}">
 
     <input type="submit" class="button" value="Save Settings">
+    <button ui-sref="profile">Go back</button>
   </form>
+</div>
+<div class="wrapper" ng-if="!currentUser">
+	<h3>Profile does not exist.</h3>
+	<p>
+		It looks like you are not logged in or registered. You must be logged in to view and edit your profile.
+	</p>
+	<button ui-sref='login.info'>Login</button>
+	<button ui-sref='login.register'>Register</button>
 </div>
