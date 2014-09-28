@@ -34,14 +34,14 @@
   your browser</a> to improve your experience.</p>
 <![endif]-->
 <!-- Navigation -->
-<header class="navigation">
-  <div class="navigation-wrapper">
+<header class="centered-navigation">
+  <div class="centered-navigation-wrapper">
 
-    <a href="" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <a href="" class="centered-navigation-menu-button" id="js-mobile-menu">MENU</a>
 
     <div class="nav">
       <div id="corner-left"></div>
-      <ul id="navigation-menu">
+      <ul class="centered-navigation-menu">
         <li class="nav-link"><a ui-sref="home.posts">home</a></li>
         <li class="nav-link more"><a href="javascript:void(0)">about</a>
           <ul class="submenu">
@@ -51,9 +51,13 @@
             <li><a ui-sref="club.information">Club</a></li>
         </li>
       </ul>
+<<<<<<< HEAD
       <li class="nav-link"><a ui-sref="calendar">calendar</a></li>
       <li class="nav-link"><a ui-sref="members">members</a></li>
       <li class="nav-link more"><a href="javascript:void(0)">committees</a>
+=======
+      <li class="nav-link"><a href="javascript:void(0)">events</a></li>
+>>>>>>> upstream/master
         <ul class="submenu">
           <li><a href="javascript:void(0)">Fundraising</a></li>
           <li><a href="javascript:void(0)">KFam</a></li>
@@ -61,8 +65,13 @@
           <li><a href="javascript:void(0)">PR</a></li>
       </li>
       </ul>
+<<<<<<< HEAD
       <li class="nav-link"><a href="javascript:void(0)">multimedia</a></li>
       <li class="nav-link"><a ui-sref="contact">contact</a></li>
+=======
+      <li class="nav-link"><a href="javascript:void(0)">media</a></li>
+      <li class="nav-link"><a href="javascript:void(0)">contact</a></li>
+>>>>>>> upstream/master
       <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
       <li ng-if="currentUser" class="nav-link"><a ui-sref="profile">profile</a></li>
       </ul>

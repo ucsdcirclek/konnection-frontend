@@ -8,6 +8,13 @@ app.controller('EventItemCtrl',
       $scope.event.registrations = data.getList('registrations').$object;
     });
 
+    $scope.register = function() {
+      $scope.event.post("register").then(function(data) {
+        $scope.registered = true;
+        $scope.$apply;
+      });
+    };
+
   }]);
 
 app.controller('EventListCtrl',
