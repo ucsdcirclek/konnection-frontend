@@ -133,18 +133,30 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                   url: '/structure',
                   templateUrl: 'partials/about/circlek/circlek.structure.html'
                 })
+                .state('circlek.tenets', {
+                  url: '/tenets',
+                  templateUrl: 'partials/about/circlek/circlek.tenets.html'
+                })
                 .state('club', {
                   abstract: true,
                   url: '/club',
                   templateUrl: 'partials/about/club/club.html'
                 })
-                .state('club.information', {
+                .state('club.general', {
                   url: '',
-                  templateUrl: 'partials/about/club/club.information.html'
+                  templateUrl: 'partials/about/club/club.general.html'
+                })
+                .state('club.board', {
+                  url: '/board',
+                  templateUrl: 'partials/about/club/club.board.html'
                 })
                 .state('club.causes', {
                   url: '/causes',
                   templateUrl: 'partials/about/club/club.causes.html'
+                })
+                .state('club.tenets', {
+                  url: '/tenets',
+                  templateUrl: 'partials/about/club/club.tenets.html'
                 })
                 .state('district', {
                   url: '/district',

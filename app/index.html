@@ -48,7 +48,7 @@
             <li><a ui-sref="circlek.general">Circle K</a></li>
             <li><a ui-sref="district">District</a></li>
             <li><a ui-sref="division">Division</a></li>
-            <li><a ui-sref="club.information">Club</a></li>
+            <li><a ui-sref="club.general">Club</a></li>
         </li>
       </ul>
       <li class="nav-link"><a ui-sref="calendar">events</a></li>
@@ -72,6 +72,8 @@
 <div id="admin-link" ng-if="isAuthorized(userRoles.officer)">
   <a ui-sref="admin.home">Admin</a>
 </div>
+
+<img src="images/header.jpg" width="100%">
 
 <div ui-view id="container"></div>
 <footer style="color: rgb(94, 73, 80); text-align: center">

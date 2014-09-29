@@ -1,7 +1,15 @@
-<div class="wrapper">
+<div id="about" class="wrapper">
 	<h1>About Circle K</h1><br />
-	<button ui-sref="circlek.general">General</button>
-	<button ui-sref="circlek.history">History</button>
-	<button ui-sref="circlek.structure">Structure</button><br /><br />
-	<div ui-view></div>
+  <div id="sidebar">
+    <div ng-class="{active:isActive('/about')}" class="page"><a ui-sref="circlek.general">General</a></p></div>
+    <hr>
+    <div ng-class="{active:isActive('/about/history')}" class="page"><a ui-sref="circlek.history">History</a></div>
+    <hr>
+    <div ng-class="{active:isActive('/about/structure')}"
+         class="page"><a ui-sref="circlek.structure">Structure</a></p></div>
+    <hr>
+    <div ng-class="{active:isActive('/about/tenets')}" class="page"><a ui-sref="circlek.tenets">Tenets</a></p></div>
+  </div>
+  <br /><br />
+	<div id="main" ui-view></div>
 </div>

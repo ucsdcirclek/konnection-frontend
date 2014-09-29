@@ -1,6 +1,15 @@
-<div class="wrapper">
-	<h1>About Our Club</h1><br />
-	<button ui-sref="club.information">Information</button>
-	<button ui-sref="club.causes">Causes</button><br /><br />
-	<div ui-view></div>
+<div id="about" class="wrapper">
+  <h1>About Circle K</h1><br />
+  <div id="sidebar">
+    <div ng-class="{active:isActive('/club')}" class="page"><a ui-sref="club.general">General</a></p></div>
+    <hr>
+    <div ng-class="{active:isActive('/club/board')}" class="page"><a ui-sref="club.board">Board</a></div>
+    <hr>
+    <div ng-class="{active:isActive('/club/causes')}"
+         class="page"><a ui-sref="club.causes">Structure</a></p></div>
+    <hr>
+    <div ng-class="{active:isActive('/club/tenets')}" class="page"><a ui-sref="club.tenets">Tenets</a></p></div>
+  </div>
+  <br /><br />
+  <div id="main" ui-view></div>
 </div>
