@@ -21,15 +21,60 @@
   
 </ul>
 
-<div class="wrapper" id="content">
+<div id="content">
   <div id="main"> 
-    <a ui-sref="home.posts"><button>Announcements</button></a>
-    <a ui-sref="home.events"><button>Upcoming Events</button></a>
-    <a ui-sref="home.forms"><button>Membership Forms</button></a>
-    <div ui-view></div> 
+    <!--<a ui-sref="home.posts"><button>Announcements</button></a>-->
+    <!--<a ui-sref="home.events"><button>Upcoming Events</button></a>-->
+    <!--<a ui-sref="home.forms"><button>Membership Forms</button></a>-->
+    <!--<div ui-view></div> -->
+    <ul class="week">
+      <li class="featured">
+        <h5>Featured</h5>
+        <p class="title">Fall Training Conference</p>
+        <p class="date">November 9</p>
+        <p class="info">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </li>
+      <li>
+        <h5>Monday</h5>
+        <ul>
+          <li>
+            <p class="title">Boys and Girls Club</p>
+            <p class="date">4:00 - 6:30PM</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>Tuesday</h5>
+        <ul>
+          <li>
+            <p class="title">Feeding America</p>
+            <p class="date">2:00 - 5:00PM</p>
+          </li>
+          <li>
+            <p class="title">Reality Changers</p>
+            <p class="date">5:30 - 9:30PM</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>Wednesday</h5>
+        <ul>
+          <li>
+            <p class="title">Reality Changers</p>
+            <p class="date">5:30 - 9:30PM</p>
+          </li>
+          <li>
+            <p class="title">Welcome Week Bonfire</p>
+            <p class="date">5:30 - 6:30PM</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 
-  <p id="sidebar">
+  <div id="sidebar">
     <div ng-if="currentUser">
       <h2>Welcome, {{ currentUser.first_name }}!</h2>
       <ul>
@@ -40,6 +85,35 @@
       <h2>Welcome!</h2>
       <p>
         If you have account, please <a href="index.html#/login">login</a>. If you do not, you are invited to <a href="index.html#/login/register">register</a> now!
-      </p>      
-    </p>
+      </p>
+    </div>
+  <h2>Goals</h2>
+
+    <div>
+      <label class="progress-label">Service</label>
+      <div class="progress-bar-indication">
+        <span class="meter red" style="width: 60%">
+          <p>60%</p>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <label class="progress-label">Fellowship</label>
+      <div class="progress-bar-indication">
+        <span class="meter red" style="width: 60%">
+          <p>60%</p>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <label class="progress-label">Leadership</label>
+      <div class="progress-bar-indication">
+        <span class="meter red" style="width: 60%">
+          <p>60%</p>
+        </span>
+      </div>
+    </div>
+
   </div>
