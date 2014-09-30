@@ -25,6 +25,12 @@ app.controller('EventListCtrl',
           month: 'dddd',    // Monday, Wednesday, etc
           week: 'dddd, MMM dS', // Monday 9/7
           day: 'dddd, MMM dS'  // Monday 9/7
+        },
+        buttonText: {
+          today:    'Today',
+          month:    'Month',
+          week:     'Week',
+          day:      'Day'
         }
       }
     };
