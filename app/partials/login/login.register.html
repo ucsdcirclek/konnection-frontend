@@ -5,25 +5,25 @@
     safe and only use it to give you updates on the events you signed up for!</p>
 
   <label for="username">Username</label>
-  <input type="text" name="username" ng-model="username">
+  <input type="text" name="username" ng-model="username" required>
 
   <label for="email">Email</label>
-  <input type="email" name="email" ng-model="email">
+  <input type="email" name="email" ng-model="email" required>
 
   <label for="password">Password</label>
-  <input type="password" name="password" ng-model="password">
+  <input type="password" name="password" ng-model="password" required ng-minlength=6>
 
   <label for="password_confirm">Password Confirmation</label>
-  <input type="password" name="password_confirm" ng-model="password_confirm">
+  <input type="password" name="password_confirm" ng-model="password_confirm" required ng-minlength=6>
 
   <label for="first_name">Phone Number</label>
-  <input type="text" name="phone" ng-model="phone">
+  <input type="text" name="phone" ng-model="phone" required>
 
   <label for="first_name">First Name</label>
-  <input type="text" name="first_name" ng-model="firstName">
+  <input type="text" name="first_name" ng-model="firstName" required>
 
   <label for="last_name">Last Name</label>
-  <input type="text" name="last_name" ng-model="lastName">
+  <input type="text" name="last_name" ng-model="lastName" required >
 
   <input type="submit" class="button" value="Register">
 </form>

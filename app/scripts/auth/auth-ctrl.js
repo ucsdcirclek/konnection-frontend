@@ -16,7 +16,7 @@ app
           password_confirmation: $scope.password_confirm,
           first_name: $scope.firstName,
           last_name: $scope.lastName,
-          phone: $scope.phone
+          phone: $scope.phone.replace(/\D/g,'')
         };
 
         var user = Auth.register(
