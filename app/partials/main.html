@@ -18,7 +18,8 @@
       <div class="content">
         <div class="text">
           <h2>Welcome to the new website!</h2>
-          <br />
+          <br/>
+
           <p>The Tech Team has been working hard this summer to create the best experience for you and we'll continue
             to do so through the year! Check back every week for new features and updates!</p>
         </div>
@@ -28,9 +29,11 @@
       <div class="content">
         <div class="text">
           <h2>Welcome Week Bonfire!</h2>
-          <br />
+          <br/>
+
           <p>Come out and enjoy some free pizza, drinks, and smores while spending some time with Circle K! Meet some
             new and returning members on the beautiful beach by a toasty fire!</p>
+
           <p>Meet up at the Triton Statue at 5PM on Wednesday</p>
         </div>
       </div>
@@ -39,8 +42,10 @@
       <div class="content">
         <div class="text">
           <h2>Fall Rush 2014</h2>
-          <br />
+          <br/>
+
           <p>We have plenty of events in store for y'all this quarter! Come out, have some fun and get to know us!</p>
+
           <p><a href="https://www.facebook.com/events/1475059086093945/">Visit the event page</a></p>
         </div>
       </div>
@@ -119,47 +124,54 @@
     <div ng-if="currentUser">
       <h2>Welcome, {{ currentUser.first_name }}!</h2>
       <ul>
-        <li><a ui-sref="profile">View profile</a></li>
+        <li><a ui-sref="settings">Account Settings</a></li>
       </ul>
     </div>
     <div ng-if="!currentUser">
       <h2>Welcome!</h2>
 
       <p>
-        If you have account, please <a href="index.html#/login">login</a>. If you do not, you are invited to <a
-          href="index.html#/login/register">register</a> now!
+        If you have account, please <a ui-sref="login.info">login</a>. If you do not, you are invited to <a
+          ui-sref="login.register">register</a>!
       </p>
     </div>
-    <h2>Goals</h2>
+    <h2>Social Media</h2>
 
-    <div>
-      <label class="progress-label">Service</label>
-
-      <div class="progress-bar-indication">
-				<span class="meter red" style="width: 60%">
-					<p>60%</p>
-				</span>
-      </div>
+    <div class="social-media">
+      <a href="https://facebook.com/ucsdcirclek"><i class="fa fa-3x fa-facebook-square"></i></a>
+      <a href="https://twitter.com/ucsdcirclek"><i class="fa fa-3x fa-twitter-square"></i></a>
+      <a href="http://instagram.com/ucsdcirclek"><i class="fa fa-3x fa-instagram"></i></a>
+      <a href="http://ucsdcirclek.tumblr.com/"><i class="fa fa-3x fa-tumblr-square"></i></a>
     </div>
 
-    <div>
-      <label class="progress-label">Fellowship</label>
+    <!--<div>-->
+    <!--<label class="progress-label">Service</label>-->
 
-      <div class="progress-bar-indication">
-				<span class="meter red" style="width: 60%">
-					<p>60%</p>
-				</span>
-      </div>
-    </div>
+    <!--<div class="progress-bar-indication">-->
+    <!--<span class="meter red" style="width: 60%">-->
+    <!--<p>60%</p>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--</div>-->
 
-    <div>
-      <label class="progress-label">Leadership</label>
+    <!--<div>-->
+    <!--<label class="progress-label">Fellowship</label>-->
 
-      <div class="progress-bar-indication">
-				<span class="meter red" style="width: 60%">
-					<p>60%</p>
-				</span>
-      </div>
-    </div>
+    <!--<div class="progress-bar-indication">-->
+    <!--<span class="meter red" style="width: 60%">-->
+    <!--<p>60%</p>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div>-->
+    <!--<label class="progress-label">Leadership</label>-->
+
+    <!--<div class="progress-bar-indication">-->
+    <!--<span class="meter red" style="width: 60%">-->
+    <!--<p>60%</p>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--</div>-->
 
   </div>

@@ -20,6 +20,30 @@
     }
   }
 
+  .social-media {
+    text-align: center;
+    margin-top: 1em;
+    color: $red;
+
+    a {
+      @extend a;
+      color: $red;
+      margin: 1em;
+
+      &:hover {
+        color: darken($red, 5%);
+      }
+    }
+
+    i {
+      color: $base-font-color;
+
+      &:hover {
+        color: darken($base-font-color, 5%);
+      }
+    }
+  }
+
   .button-text {
     color: #ffffff;
   }
