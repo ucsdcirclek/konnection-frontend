@@ -15,13 +15,17 @@ app
           password: $scope.password,
           password_confirmation: $scope.password_confirm,
           first_name: $scope.firstName,
-          last_name: $scope.lastName
+          last_name: $scope.lastName,
+          phone: $scope.phone
         };
 
         var user = Auth.register(
           input,
           function() {
             console.log('Registration successful');
+            if ($scope.lastState) {
+              $scope.go('login.info');
+            }
           },
           function() {
             console.log('Unable to register');
@@ -40,7 +44,12 @@ app
         Auth.login(credentials, $scope.remember).then(
           function(user) {
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-            $state.go('home.posts');
+
+            if ($scope.lastState) {
+              $window.location.href($scope.lastState);
+            } else {
+              $state.go('home.posts');
+            }
           }, function () {
             $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
           }

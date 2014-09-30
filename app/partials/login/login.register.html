@@ -1,6 +1,9 @@
 <form ng-submit="register()">
   <h2>Let's get registered!</h2>
 
+  <p>You'll need to register for an account before being able to sign up for an event! We'll keep your information
+    safe and only use it to give you updates on the events you signed up for!</p>
+
   <label for="username">Username</label>
   <input type="text" name="username" ng-model="username">
 
@@ -12,6 +15,9 @@
 
   <label for="password_confirm">Password Confirmation</label>
   <input type="password" name="password_confirm" ng-model="password_confirm">
+
+  <label for="first_name">Phone Number</label>
+  <input type="text" name="phone" ng-model="phone">
 
   <label for="first_name">First Name</label>
   <input type="text" name="first_name" ng-model="firstName">

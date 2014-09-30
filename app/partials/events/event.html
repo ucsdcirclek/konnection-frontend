@@ -60,7 +60,7 @@
         <h4>Who's going</h4>
         <ul>
           <li class="avatar small" ng-repeat="registration in event.registrations">
-            <img src="http://placehold.it/100x100">
+            <img src="https://www.drupal.org/files/profile_default.jpg">
 
             <p class="name">{{ registration.name }}</p>
           </li>
@@ -73,7 +73,10 @@
       <div class="chair avatar large">
         <h5>Person of Contact</h5>
         <br />
-        <img src="http://placehold.it/200x200">
+        <div class="image">
+
+        </div>
+        <img src="https://www.drupal.org/files/profile_default.jpg">
 
         <p class="name">{{ event.contact.first_name }} {{ event.contact.last_name }}</p>
 

@@ -2,6 +2,7 @@ app.controller('AppCtrl', ['$scope', 'USER_ROLES', 'Auth', '$rootScope', '$locat
   $scope.currentUser = null;
   $scope.userRoles = USER_ROLES;
   $scope.isAuthorized = Auth.isAuthorized;
+  $scope.lastState = null;
 
   $scope.setCurrentUser = function(user) {
     $scope.currentUser = user;

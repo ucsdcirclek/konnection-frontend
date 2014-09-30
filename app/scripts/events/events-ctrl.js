@@ -1,17 +1,39 @@
 'use strict';
 
 app.controller('EventItemCtrl',
-  ['$scope', '$stateParams', 'Events', function($scope, $stateParams, Events) {
+  ['$scope', '$stateParams', 'Events', '$state', function($scope, $stateParams, Events, $state) {
 
     $scope.event = Events.get($stateParams.id).then(function(data) {
       $scope.event = data;
-      $scope.event.registrations = data.getList('registrations').$object;
+      $scope.event.registrations = data.getList('registrations').then(function(registrations) {
+        $scope.event.registrations = registrations;
+
+        _.forEach(registrations, function(registration) {
+          console.log(registration.user_id);
+          if ($scope.currentUser && registration.user_id == $scope.currentUser.id) {
+            $scope.registered = true;
+            $scope.$apply();
+          }
+        });
+
+        return registrations;
+      });
+
       $scope.event.contact = data.customGET('contact').$object;
+
+
     });
 
     $scope.register = function() {
+      if (!$scope.currentUser) {
+        $scope.lastState = $state.href('events', {id: $scope.event.id}, {absolute: true});
+        $state.go('login.register');
+        return;
+      }
+
       $scope.event.post("register").then(function(data) {
         $scope.registered = true;
+        $scope.event.registrations.push({ name: $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name });
         $scope.$apply;
       });
     };
