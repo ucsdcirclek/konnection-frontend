@@ -6,6 +6,7 @@ app.controller('EventItemCtrl',
     $scope.event = Events.get($stateParams.id).then(function(data) {
       $scope.event = data;
       $scope.event.registrations = data.getList('registrations').$object;
+      $scope.event.contact = data.customGET('contact').$object;
     });
 
     $scope.register = function() {

@@ -66,12 +66,14 @@
 
 
     <div class="right">
-      <div class="chair avatar large" ng-repeat="registration in event.registrations | filter:chair_status:1">
+      <div class="chair avatar large">
+        <h5>Person of Contact</h5>
+        <br />
         <img src="http://placehold.it/200x200">
 
-        <p class="name">{{ registration.name }}</p>
+        <p class="name">{{ event.contact.first_name }} {{ event.contact.last_name }}</p>
 
-        <p class="info">(555) 555-5555</p>
+        <p class="info">{{ event.contact.phone }}</p>
       </div>
     </div>
 
