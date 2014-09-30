@@ -18,12 +18,41 @@ app.controller('EventItemCtrl',
   }]);
 
 app.controller('EventListCtrl',
-  ['$scope', '$stateParams', 'Events', function($scope, $stateParams, Events) {
-    Events.getList().then(function(events) {
-      $scope.events = events;
-    }, function() {
-      console.log("Error loading events.");
-    });
+  ['$scope', '$stateParams', 'Events', 'Restangular', function($scope, $stateParams, Events, Restangular) {
+    $scope.uiConfig = {
+      calendar: {
+        columnFormat: {
+          month: 'dddd',    // Monday, Wednesday, etc
+          week: 'dddd, MMM dS', // Monday 9/7
+          day: 'dddd, MMM dS'  // Monday 9/7
+        }
+      }
+    };
+
+    $scope.getEvents = function(startTime, endTime, callback) {
+      Restangular.all('events').getList({
+        start: startTime.toISOString().replace(/\.[0-9]*/g, ''),
+        end: endTime.toISOString().replace(/\.[0-9]*/g, '')
+      }).then(function(eventsSrc) {
+        var events = [];
+
+        if (typeof eventsSrc !== 'undefined' && eventsSrc.length > 0) {
+          _.forEach(eventsSrc, function(event) {
+            events.push({
+              title: event.title,
+              start: event.start_time,
+              end: event.end_time
+            });
+          });
+        }
+
+        callback(events);
+      });
+    };
+
+    $scope.eventSources = [$scope.getEvents];
+
+
   }]);
 
 app.controller('EventCreateCtrl',

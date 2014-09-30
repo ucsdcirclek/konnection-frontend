@@ -2,7 +2,7 @@
 
 var app = angular.module('konnection',
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate', 'froala',
-   'angular-carousel'])
+   'angular-carousel', 'ui.calendar'])
   .value('froalaConfig', {
     inlineMode: false
   });
@@ -68,7 +68,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                 })
                 .state('calendar', {
                   url: '/calendar',
-                  templateUrl: 'partials/unavailable.html',
+                  templateUrl: 'partials/calendar/calendar.html',
                   controller: 'EventListCtrl'
                 })
                 .state('settings', {
@@ -191,18 +191,24 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
 
   Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
     var extractedData = data;
+
     // .. to look for getList operations
     if (operation === "getList") {
       // .. and handle the data and meta data
-      extractedData = data.data;
-      extractedData.meta = {
-        total: data.total,
-        per_page: data.per_page,
-        current_page: data.current_page,
-        last_page: data.last_page,
-        from: data.form,
-        to: data.to
-      };
+      if (data.hasOwnProperty('data')) {
+        extractedData = data.data;
+      }
+
+      if (what !== 'events') {
+        extractedData.meta = {
+          total: data.total,
+          per_page: data.per_page,
+          current_page: data.current_page,
+          last_page: data.last_page,
+          from: data.form,
+          to: data.to
+        };
+      }
     }
     else if (what !== 'auth') {
       for (var key in data) {
@@ -212,7 +218,6 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
         }
       }
     }
-
 
     return extractedData;
   });
