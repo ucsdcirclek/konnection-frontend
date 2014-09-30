@@ -1,12 +1,14 @@
-<br />
-<ul>
-	<li ng-repeat="event in events | limitTo:6">
-		<a href="index.html#/events/{{event.id}}">
-			<h5>{{event.start_time | date:"EEEE, MMMM d"}}</h5>
-			<strong>{{event.title}}</strong>
-		</a>			
-		<p>
-			<a ng-click="showDescription = !showDescription" ng-show="showDescription">[less]</a>
-		</p>
-	</li>
-</ul>
+
+<div class="wrapper">
+	<h3>Events</h3>
+	<br />
+	<ul>
+		<li ng-repeat="event in events">
+			<a href="index.html#/events/{{event.id}}">
+				<h5><strong>{{event.title}}</strong></h5></a>	
+
+				{{event.start_time | date:"EEEE, MMMM d" | lowercase}}
+				<br /><br />
+			</li>
+		</ul>
+	</div>
