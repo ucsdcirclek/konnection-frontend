@@ -23,3 +23,18 @@ body {
 .wrapper {
   padding: 5%;
 }
+
+#header-image {
+  @include span-columns(12);
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+
+  h1 {
+    line-height: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
