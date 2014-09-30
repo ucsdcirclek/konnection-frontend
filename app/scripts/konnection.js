@@ -23,8 +23,10 @@ app.constant('AUTH_EVENTS', {
   notAuthorized: 'auth-not-authorized'
 });
 
-app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
-            function($stateProvider, $urlRouterProvider, USER_ROLES) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_ROLES',
+            function($stateProvider, $urlRouterProvider, $locationProvider, USER_ROLES) {
+              $locationProvider.html5Mode( true );
+
               $stateProvider
                 .state('home', {
                   abstract: true,
@@ -60,10 +62,9 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                   templateUrl: 'partials/login/login.register.html',
                   controller: 'AuthCtrl'
                 })
-                .state('events', {
-                	url: '/events',
-                	templateUrl: 'partials/events/events.html',
-                	controller: 'EventListCtrl'
+                .state('login.register-success', {
+                  url: '/register/success',
+                  templateUrl: 'partials/login/login.register-success.html'
                 })
                 .state('event', {
                   url: '/events/:id',
@@ -71,7 +72,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                   controller: 'EventItemCtrl'
                 })
                 .state('calendar', {
-                  url: '/calendar',
+                  url: '/events',
                   templateUrl: 'partials/calendar/calendar.html',
                   controller: 'EventListCtrl'
                 })
@@ -123,7 +124,10 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                 .state('circlek', {
                   url: '/about',
                   templateUrl: 'partials/about/circlek/circlek.html',
-                  abstract: true
+                  abstract: true,
+                  controller: ['Page', function(Page){
+                    Page.setTitle('About');
+                  }]
                 })
                 .state('circlek.general', {
                   url: '',
@@ -176,17 +180,20 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                 })
                 .state('contact', {
                   url: '/contact',
-                  templateUrl: 'partials/contact/contact.html'
+                  templateUrl: 'partials/contact/contact.html',
+                  controller: ['Page', function(Page){
+                    Page.setTitle('Contact Us');
+                  }]
                 })
                 .state('articles', {
-                	url: '/articles',
-                	templateUrl: 'partials/articles/articles.html',
-                	controller: 'PostListCtrl'
+                  url: '/articles',
+                  templateUrl: 'partials/articles/articles.html',
+                  controller: 'PostListCtrl'
                 })
                 .state('article', {
-                	url: '/articles/:id',
-                	templateUrl: 'partials/articles/article.html',
-                	controller: 'PostItemCtrl'
+                  url: '/articles/:id',
+                  templateUrl: 'partials/articles/article.html',
+                  controller: 'PostItemCtrl'
                 });
 
 
@@ -240,7 +247,7 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
     var token = typeof sessionStorage.token === 'undefined' ? localStorage.token : sessionStorage.token
     Restangular.setDefaultHeaders({'X-Auth-Token': token});
 
-    var user = Restangular.one('self').get().then(function (data) {
+    var user = Restangular.one('self').get().then(function(data) {
       var roles = [];
 
       data.roles.forEach(
@@ -280,3 +287,64 @@ app.run(['$rootScope', 'AUTH_EVENTS', 'Auth', 'USER_ROLES', function($rootScope,
     }
   });
 }]);
+
+app.run(['$rootScope', '$state', '$stateParams',
+         function($rootScope, $state, $stateParams) {
+           $rootScope.$state = $state;
+           $rootScope.$stateParams = $stateParams;
+         }]);
+
+app.filter('tel', function() {
+  return function(tel) {
+    if (!tel) {
+      return '';
+    }
+
+    var value = tel.toString().trim().replace(/^\+/, '');
+
+    if (value.match(/[^0-9]/)) {
+      return tel;
+    }
+
+    var country, city, number;
+
+    switch (value.length) {
+      case 10: // +1PPP####### -> C (PPP) ###-####
+        country = 1;
+        city = value.slice(0, 3);
+        number = value.slice(3);
+        break;
+
+      case 11: // +CPPP####### -> CCC (PP) ###-####
+        country = value[0];
+        city = value.slice(1, 4);
+        number = value.slice(4);
+        break;
+
+      case 12: // +CCCPP####### -> CCC (PP) ###-####
+        country = value.slice(0, 3);
+        city = value.slice(3, 5);
+        number = value.slice(5);
+        break;
+
+      default:
+        return tel;
+    }
+
+    if (country == 1) {
+      country = "";
+    }
+
+    number = number.slice(0, 3) + '-' + number.slice(3);
+
+    return (country + " (" + city + ") " + number).trim();
+  };
+});
+
+app.factory('Page', function(){
+  var title = 'Home';
+  return {
+    title: function() { return title; },
+    setTitle: function(newTitle) { title = newTitle; }
+  };
+});
