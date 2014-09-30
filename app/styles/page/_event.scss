@@ -41,13 +41,12 @@
     display: block;
     border-bottom: 1px solid $light-gray;
 
-    h2 {
-      display: inline-block;
+    .event-info {
+      @include span-columns(10);
     }
 
-    button {
-      display: inline-block;
-      float: right;
+    .signup {
+      @include span-columns(2);
     }
 
     p {
