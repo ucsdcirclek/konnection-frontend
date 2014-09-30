@@ -9,6 +9,10 @@ ul.week {
       color: white;
       border-bottom: 1px solid white;
     }
+
+    .info {
+      text-align: center;
+    }
   }
 
   > li:first-child {
@@ -45,7 +49,7 @@ ul.week {
     }
 
     .info {
-      font-size: .8em;
+      font-size: .7em;
     }
 
   }
