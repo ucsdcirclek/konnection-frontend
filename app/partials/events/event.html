@@ -42,6 +42,7 @@
         <ul>
           <li><strong>{{ event.start_time | date : "EEEE, MMMM d, y"}}</strong></li>
           <li><strong>{{event.start_time | date: " h:mma to " | lowercase}}{{ event.end_time | date : 'h:mma' | lowercase}}</strong></li>
+          <li>Meet at <strong>{{ event.meeting_location }}</strong></li>
         </ul>
       </div>
 
