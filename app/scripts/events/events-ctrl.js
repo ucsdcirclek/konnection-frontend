@@ -9,7 +9,7 @@ app.controller('EventItemCtrl',
         $scope.event.registrations = registrations;
 
         _.forEach(registrations, function(registration) {
-          console.log(registration.user_id);
+
           if ($scope.currentUser && registration.user_id == $scope.currentUser.id) {
             $scope.registered = true;
             $scope.$apply();
