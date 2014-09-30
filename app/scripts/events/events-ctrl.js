@@ -18,7 +18,7 @@ app.controller('EventItemCtrl',
   }]);
 
 app.controller('EventListCtrl',
-  ['$scope', '$stateParams', 'Events', 'Restangular', function($scope, $stateParams, Events, Restangular) {
+  ['$scope', '$stateParams', 'Events', 'Restangular', '$state', function($scope, $stateParams, Events, Restangular, $state) {
     $scope.uiConfig = {
       calendar: {
         columnFormat: {
@@ -31,6 +31,9 @@ app.controller('EventListCtrl',
           month:    'Month',
           week:     'Week',
           day:      'Day'
+        },
+        eventClick: function(event) {
+          $state.go('event', { id: event.id });
         }
       }
     };
@@ -45,6 +48,7 @@ app.controller('EventListCtrl',
         if (typeof eventsSrc !== 'undefined' && eventsSrc.length > 0) {
           _.forEach(eventsSrc, function(event) {
             events.push({
+              id: event.id,
               title: event.title,
               start: event.start_time,
               end: event.end_time
