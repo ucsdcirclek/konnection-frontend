@@ -23,9 +23,7 @@ app
           input,
           function() {
             console.log('Registration successful');
-            if ($scope.lastState) {
-              $scope.go('login.info');
-            }
+            $state.go('login.register-success');
           },
           function() {
             console.log('Unable to register');
@@ -46,10 +44,11 @@ app
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 
             if ($scope.lastState) {
-              $window.location.href($scope.lastState);
-            } else {
-              $state.go('home.posts');
+              $state.go($scope.lastState.state, { id: $scope.lastState.id });
+              return;
             }
+
+            $state.go('home.posts');
           }, function () {
             $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
           }

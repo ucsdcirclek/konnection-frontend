@@ -4,6 +4,11 @@ app.controller('AppCtrl', ['$scope', 'USER_ROLES', 'Auth', '$rootScope', '$locat
   $scope.isAuthorized = Auth.isAuthorized;
   $scope.lastState = null;
 
+  $scope.setLastState = function(newState, itemId) {
+    itemId = itemId || null;
+    $scope.lastState = { state: newState, id: itemId };
+  };
+
   $scope.setCurrentUser = function(user) {
     $scope.currentUser = user;
   };

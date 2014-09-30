@@ -26,7 +26,7 @@ app.controller('EventItemCtrl',
 
     $scope.register = function() {
       if (!$scope.currentUser) {
-        $scope.lastState = $state.href('events', {id: $scope.event.id}, {absolute: true});
+        $scope.setLastState('event', $scope.event.id);
         $state.go('login.register');
         return;
       }
