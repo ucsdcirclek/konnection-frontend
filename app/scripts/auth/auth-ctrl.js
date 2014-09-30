@@ -48,7 +48,7 @@ app
               return;
             }
 
-            $state.go('home.posts');
+            $state.go('home');
           }, function () {
             $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
           }

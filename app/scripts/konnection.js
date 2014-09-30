@@ -29,23 +29,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
 
               $stateProvider
                 .state('home', {
-                  abstract: true,
                   url: '/',
                   templateUrl: 'partials/main.html',
                   controller: 'MainCtrl'
-                })
-                .state('home.posts', {
-                  url: '',
-                  templateUrl: 'partials/main.posts.html',
-                  controller: 'PostListCtrl'
-                })
-                .state('home.events', {
-                  url: 'upcoming',
-                  templateUrl: 'partials/unavailable.html'
-                })
-                .state('home.forms', {
-                  url: 'forms',
-                  templateUrl: 'partials/unavailable.html'
                 })
                 .state('login', {
                   abstract: true,

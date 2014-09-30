@@ -58,6 +58,7 @@ app.controller('EventListCtrl',
           week:     'Week',
           day:      'Day'
         },
+        ignoreTimezone: false,
         eventClick: function(event) {
           $state.go('event', { id: event.id });
         }
