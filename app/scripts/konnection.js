@@ -38,13 +38,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                   controller: 'PostListCtrl'
                 })
                 .state('home.events', {
-                  url: 'events',
-                  templateUrl: 'partials/events/events.html',
-                  controller: 'EventListCtrl'
+                  url: 'upcoming',
+                  templateUrl: 'partials/unavailable.html'
                 })
                 .state('home.forms', {
                   url: 'forms',
-                  templateUrl: 'partials/main.forms.html'
+                  templateUrl: 'partials/unavailable.html'
                 })
                 .state('login', {
                   abstract: true,
@@ -60,6 +59,11 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                   url: '/register',
                   templateUrl: 'partials/login/login.register.html',
                   controller: 'AuthCtrl'
+                })
+                .state('events', {
+                	url: '/events',
+                	templateUrl: 'partials/events/events.html',
+                	controller: 'EventListCtrl'
                 })
                 .state('event', {
                   url: '/events/:id',
@@ -173,6 +177,16 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',
                 .state('contact', {
                   url: '/contact',
                   templateUrl: 'partials/contact/contact.html'
+                })
+                .state('articles', {
+                	url: '/articles',
+                	templateUrl: 'partials/articles/articles.html',
+                	controller: 'PostListCtrl'
+                })
+                .state('article', {
+                	url: '/articles/:id',
+                	templateUrl: 'partials/articles/article.html',
+                	controller: 'PostItemCtrl'
                 });
 
 

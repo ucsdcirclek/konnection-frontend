@@ -1,3 +1,5 @@
+'use strict'
+
 app.controller('PostCreateCtrl',
   ['$scope', '$state', 'Restangular', function($scope, $state, Restangular) {
 
@@ -14,7 +16,7 @@ app.controller('PostCreateCtrl',
         function() {
           console.log('There was an error!');
         }
-      );
+        );
     }
 
     $scope.create = create;

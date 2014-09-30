@@ -1,0 +1,11 @@
+<div class="wrapper">
+	<h3>Announcements</h3><br />
+	<ul>
+		<li ng-repeat="post in posts">
+			<a href="index.html#/articles/{{post.id}}"><h5>{{post.title}}</h5></a>			
+			<p>{{post.content | limitTo:50}} ...</p>
+			<i>posted {{post.created_at | date: "EEEE, MMMM d 'at' h:mma" | lowercase}}</i>
+			<br /><br />
+		</li>
+	</ul>
+</div>

@@ -36,8 +36,10 @@
       <br /><button ng-hide="registered" ng-click="register()">Signup</button><br /><br />
 
       <h2>{{ event.title }}</h2>
-
-      <p>{{ event.start_time | date : 'EEEE, MMMM d, y | h:mma to ' | lowercase }}{{ event.end_time | date : 'h:mma' | lowercase}}</p>
+      <ul>
+        <li><strong>{{ event.start_time | date : "EEEE, MMMM d, y"}}</strong></li>
+        <li><strong>{{event.start_time | date: " h:mma to " | lowercase}}{{ event.end_time | date : 'h:mma' | lowercase}}</strong></li>
+      </ul>
 
 
     </div>
