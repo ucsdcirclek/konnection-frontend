@@ -5,7 +5,7 @@
     safe and only use it to give you updates on the events you signed up for!</p>
 
   <label for="username">Username</label>
-  <input type="text" name="username" ng-model="username" required>
+  <input type="text" name="username" ng-model="username" required ng-pattern="/^[a-z0-9]+$/i">
 
   <label for="email">Email</label>
   <input type="email" name="email" ng-model="email" required>
