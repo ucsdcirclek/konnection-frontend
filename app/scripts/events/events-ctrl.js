@@ -52,7 +52,7 @@ app.controller('EventItemCtrl',
      };
 
      $scope.chair = function() {
-       if (!$scope.isAuthorized(userRoles.officer)) {
+       if (!$scope.isAuthorized($scope.userRoles.officer)) {
          return;
        }
 
