@@ -39,6 +39,17 @@ app.controller('EventItemCtrl',
       });
     };
 
+    $scope.unregister = function() {
+      $scope.event.post("unregister").then(function() {
+        $scope.registered = false;
+        $scope.event.registrations = Events.get($stateParams.id).then(function(data) {
+          $scope.event.registrations = data.getList('registrations').then(function(registrations) {
+            $scope.event.registrations = registrations;
+          });
+        });
+      });
+    };
+
   }]);
 
 app.controller('EventListCtrl',
