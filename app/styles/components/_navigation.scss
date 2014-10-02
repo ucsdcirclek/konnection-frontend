@@ -12,7 +12,7 @@
   $centered-navigation-submenu-padding: 1em;
   $centered-navigation-submenu-width: em(144px);
   $centered-navigation-item-nudge: 2.2em;
-  $horizontal-bar-mode: $large-screen;
+  $horizontal-bar-mode: em(30);
 
   background-color: $centered-navigation-background;
   border-bottom: 1px solid darken($centered-navigation-background, 6);
@@ -265,6 +265,7 @@
   //Side Images
   #corner-left {
     position:absolute;
+    display: none;
     background:url("../images/ScrollSide.svg") no-repeat 0 0;
     top:-9.5px;
     left:-45px;
@@ -272,10 +273,15 @@
     height:150px;
     text-indent:-9999px;
     z-index:999;
+
+    @include media($medium-screen) {
+      display: initial;
+    }
   }
 
   #corner-right {
     position:absolute;
+    display: none;
     background:url("../images/ScrollSideR.svg") no-repeat 0 0;
     top: -9.5px;
     right:-102px;
@@ -283,5 +289,9 @@
     height:150px;
     text-indent:-9999px;
     z-index:-1;
+
+    @include media($medium-screen) {
+      display: initial;
+    }
   }
 }
