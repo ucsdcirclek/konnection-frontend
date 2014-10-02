@@ -187,7 +187,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
             }]);
 
 app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, $rootScope) {
-  Restangular.setBaseUrl('http://dev.ucsdcki.org/api');
+  Restangular.setBaseUrl('/api');
 
   Restangular.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
@@ -241,8 +241,6 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
           roles.push(element.id);
         }
       );
-
-      console.log(data);
 
       Session.create(token, data.id, roles);
       $rootScope.setCurrentUser(data);
