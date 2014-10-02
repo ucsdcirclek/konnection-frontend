@@ -29,7 +29,6 @@
   <script src="bower_components/modernizr/modernizr.js"></script>
   <!-- endbuild -->
 
-  <base href="/">
 </head>
 <body>
 <!--[if lt IE 10]>
@@ -52,13 +51,26 @@
             <li><a ui-sref="district">District</a></li>
             <li><a ui-sref="division">Division</a></li>
             <li><a ui-sref="club.general">Club</a></li>
+          </ul>
         </li>
-      </ul>
-      <li class="nav-link"><a ui-sref="calendar">events</a></li>
-      <li class="nav-link"><a ui-sref="contact">contact</a></li>
-      <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
-      <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.register">register</a></li>
-      <li ng-if="currentUser" class="nav-link"><a ui-sref="settings">settings</a></li>
+        <li class="nav-link more"><a ui-sref="calendar">events</a>
+          <ul class="submenu">
+            <li><a target="_blank" href="http://dcon.cnhcirclek.org/">DCON</a></li>
+            <li><a target="_blank" href="http://ftc.cnhcirclek.org/">FTC</a></li>
+            <li><a target="_blank" href="http://www.cnhcirclek.org/event/7-crazy_kompetition_for_infants_south/">CKI South</a></li>
+          </ul>
+        </li>
+        <li class="nav-link"><a ui-sref="contact">contact</a></li>
+        <li class="nav-link more"><a target="_blank" href="http://www.kiwanis.org/">kiwanis</a>
+          <ul class="submenu">
+            <li><a target="_blank" href="http://www.kiwanisclublajolla.org/">La Jolla Kiwanis</a></li>
+            <li><a target="_blank" href="http://sdsucki.org">SDSU Circle K</a></li>
+          </ul>
+        </li>
+        <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
+        <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.register">register</a></li>
+        <li ng-if="currentUser" class="nav-link"><a ui-sref="settings">settings</a></li>
+
       </ul>
       <div id="corner-right"></div>
     </div>
