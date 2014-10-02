@@ -18,7 +18,7 @@ app.controller('UserUpdateCtrl',
 
       Restangular.one('self').patch(input).then(function(data) {
         console.log('Update successful.');
-        $state.go('home.posts');
+        $state.go('home');
       });
     };
 
