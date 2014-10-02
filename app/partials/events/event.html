@@ -47,8 +47,8 @@
       </div>
 
       <div class="signup">
-        <button ng-hide="registered" ng-click="register()">Signup</button>
-        <button ng-show="registered" ng-click="unregister()">Unsignup</button>
+        <button ng-if="!registered" ng-click="register()">Signup</button>
+        <button ng-if="registered" ng-click="unregister()">Unsignup</button>
       </div>
 
     </div>
@@ -65,6 +65,7 @@
             <img src="https://www.drupal.org/files/profile_default.jpg">
 
             <p class="name">{{ registration.name }}</p>
+            <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ registration.phone | tel }}</p>
           </li>
         </ul>
       </div>
@@ -84,6 +85,7 @@
 
         <p class="info">{{ event.contact.phone | tel }}</p>
       </div>
+      <button ng-if="isAuthorized(userRoles.officer)" type="button" ng-click="chair()">Chair Event</button>
     </div>
 
   </div>
