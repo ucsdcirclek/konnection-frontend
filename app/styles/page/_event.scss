@@ -47,6 +47,10 @@
 
     .signup {
       @include span-columns(4);
+
+      button {
+        float: right;
+      }
     }
 
     p {

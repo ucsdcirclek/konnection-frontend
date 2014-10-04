@@ -63,7 +63,11 @@
         <h4>Who's going</h4>
         <ul>
           <li class="avatar small" ng-repeat="registration in event.registrations">
-            <img src="https://www.drupal.org/files/profile_default.jpg">
+
+            <div class="avatar-wrapper">
+              <img src="https://www.drupal.org/files/profile_default.jpg">
+              <i ng-if="registration.driver_status" class="overlay fa fa-car"></i>
+            </div>
 
             <p class="name">{{ registration.name }}</p>
             <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ registration.phone | tel }}</p>

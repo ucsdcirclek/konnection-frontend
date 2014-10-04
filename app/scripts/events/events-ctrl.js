@@ -14,6 +14,7 @@ app.controller('EventItemCtrl',
 
            if ($scope.currentUser && registration.user_id == $scope.currentUser.id) {
              $scope.registered = true;
+             $scope.driving = registration.driver_status;
              $scope.$apply();
            }
          });
