@@ -47,8 +47,9 @@
       </div>
 
       <div class="signup">
-        <button ng-if="!registered" ng-click="register()">Signup</button>
-        <button ng-if="registered" ng-click="unregister()">Unsignup</button>
+        <button ng-if="!registered" ng-click="register()"><i class="fa fa-check"></i> Signup</button>
+        <button ng-if="registered && !driving" ng-click="drive()"><i class="fa fa-car"></i> Drive</button>
+        <button ng-if="registered" ng-click="unregister()"><i class="fa fa-close"></i> Signup</button>
       </div>
 
     </div>

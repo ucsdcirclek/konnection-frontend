@@ -36,7 +36,7 @@ app.controller('EventItemCtrl',
        $scope.event.post("register").then(function(data) {
          $scope.registered = true;
          $scope.event.registrations.push({name: $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name});
-         $scope.$apply;
+         $scope.$apply();
        });
      };
 
@@ -48,6 +48,13 @@ app.controller('EventItemCtrl',
              $scope.event.registrations = registrations;
            });
          });
+       });
+     };
+
+     $scope.drive = function() {
+       $scope.event.all('register').patch({ driver_status: true }).then(function(data) {
+         $scope.driving = true;
+         $scope.$apply();
        });
      };
 
