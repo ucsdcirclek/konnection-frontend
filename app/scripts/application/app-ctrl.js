@@ -24,6 +24,5 @@ app.controller('AppCtrl', ['$scope', 'USER_ROLES', 'Auth', '$rootScope', '$locat
 
   $scope.setTitle = function(title) {
     $scope.title = title;
-    $scope.$apply();
   };
 }]);
