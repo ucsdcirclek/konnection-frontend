@@ -80,7 +80,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                 })
                 .state('admin.home', {
                   url: '',
-                  templateUrl: 'partials/admin/home.html'
+                  templateUrl: 'partials/admin/home.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Admin');
+                  }]
                 })
                 .state('admin.events', {
                   abstract: true,
@@ -111,30 +114,45 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                   url: '/about',
                   templateUrl: 'partials/about/circlek/circlek.html',
                   abstract: true,
-                  controller: ['Page', function(Page){
-                    Page.setTitle('About');
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('About');
                   }]
                 })
                 .state('circlek.general', {
                   url: '',
-                  templateUrl: 'partials/about/circlek/circlek.general.html'
+                  templateUrl: 'partials/about/circlek/circlek.general.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Circle K');
+                  }]
                 })
                 .state('circlek.history', {
                   url: '/history',
-                  templateUrl: 'partials/about/circlek/circlek.history.html'
+                  templateUrl: 'partials/about/circlek/circlek.history.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Circle K History');
+                  }]
                 })
                 .state('circlek.structure', {
                   url: '/structure',
-                  templateUrl: 'partials/about/circlek/circlek.structure.html'
+                  templateUrl: 'partials/about/circlek/circlek.structure.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Circle K Structure');
+                  }]
                 })
                 .state('circlek.tenets', {
                   url: '/tenets',
-                  templateUrl: 'partials/about/circlek/circlek.tenets.html'
+                  templateUrl: 'partials/about/circlek/circlek.tenets.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Circle K Tenets');
+                  }]
                 })
                 .state('club', {
                   abstract: true,
                   url: '/club',
-                  templateUrl: 'partials/about/club/club.html'
+                  templateUrl: 'partials/about/club/club.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('About Our Club');
+                  }]
                 })
                 .state('club.general', {
                   url: '',
@@ -154,11 +172,17 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                 })
                 .state('district', {
                   url: '/district',
-                  templateUrl: 'partials/about/district/district.html'
+                  templateUrl: 'partials/about/district/district.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Our District');
+                  }]
                 })
                 .state('division', {
                   url: '/division',
-                  templateUrl: 'partials/about/division/division.html'
+                  templateUrl: 'partials/about/division/division.html',
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Our Division');
+                  }]
                 })
                 .state('members', {
                   url: '/members',
@@ -167,8 +191,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                 .state('contact', {
                   url: '/contact',
                   templateUrl: 'partials/contact/contact.html',
-                  controller: ['Page', function(Page){
-                    Page.setTitle('Contact Us');
+                  controller: ['$scope', function($scope){
+                    $scope.setTitle('Contact Us');
                   }]
                 })
                 .state('articles', {
@@ -322,13 +346,5 @@ app.filter('tel', function() {
     number = number.slice(0, 3) + '-' + number.slice(3);
 
     return (country + " (" + city + ") " + number).trim();
-  };
-});
-
-app.factory('Page', function(){
-  var title = 'Home';
-  return {
-    title: function() { return title; },
-    setTitle: function(newTitle) { title = newTitle; }
   };
 });

@@ -1,12 +1,12 @@
 'use strict';
 
 app.controller('EventItemCtrl',
-  ['$scope', '$stateParams', 'Events', '$state', 'Page', 'Restangular',
-   function($scope, $stateParams, Events, $state, Page, Restangular) {
+  ['$scope', '$stateParams', 'Events', '$state', 'Restangular',
+   function($scope, $stateParams, Events, $state, Restangular) {
 
      $scope.event = Events.get($stateParams.id).then(function(data) {
        $scope.event = data;
-       Page.setTitle(data.title);
+       $scope.setTitle(data.title);
        $scope.event.registrations = data.getList('registrations').then(function(registrations) {
          $scope.event.registrations = registrations;
 
@@ -65,9 +65,9 @@ app.controller('EventItemCtrl',
    }]);
 
 app.controller('EventListCtrl',
-  ['$scope', '$stateParams', 'Events', 'Restangular', '$state', 'Page',
-   function($scope, $stateParams, Events, Restangular, $state, Page) {
-     Page.setTitle('Events');
+  ['$scope', '$stateParams', 'Events', 'Restangular', '$state',
+   function($scope, $stateParams, Events, Restangular, $state) {
+     $scope.setTitle('Events');
 
      $scope.uiConfig = {
        calendar: {

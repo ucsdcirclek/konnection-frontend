@@ -1,10 +1,9 @@
-app.controller('AppCtrl', ['$scope', 'USER_ROLES', 'Auth', '$rootScope', '$location', 'Page', function($scope, USER_ROLES, Auth, $rootScope, $location, Page) {
+app.controller('AppCtrl', ['$scope', 'USER_ROLES', 'Auth', '$rootScope', '$location', function($scope, USER_ROLES, Auth, $rootScope, $location) {
   $scope.currentUser = null;
   $scope.userRoles = USER_ROLES;
   $scope.isAuthorized = Auth.isAuthorized;
   $scope.lastState = null;
-
-  $scope.Page = Page;
+  $scope.title = 'Home';
 
   $scope.setLastState = function(newState, itemId) {
     itemId = itemId || null;
@@ -21,5 +20,10 @@ app.controller('AppCtrl', ['$scope', 'USER_ROLES', 'Auth', '$rootScope', '$locat
 
   $rootScope.setCurrentUser = function(user) {
     $scope.currentUser = user;
+  };
+
+  $scope.setTitle = function(title) {
+    $scope.title = title;
+    $scope.$apply();
   };
 }]);

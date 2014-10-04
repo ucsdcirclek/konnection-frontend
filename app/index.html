@@ -2,23 +2,23 @@
 <html class="no-js" ng-app="konnection" ng-controller="AppCtrl">
 <head>
   <meta charset="utf-8">
-  <title>UCSD Circle K | {{ Page.title() }}</title>
+  <title ng-bind="'UCSD Circle K | ' + title">UCSD Circle K</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
 
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
 
   <!-- build:css({.tmp,app}) styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date.css" />
-  <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date-default-theme.css" />
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="bower_components/FroalaWysiwygEditor/css/froala_editor.min.css" />
-  <link rel="stylesheet" href="bower_components/FroalaWysiwygEditor/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
-  <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css" />
+  <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date.css"/>
+  <link rel="stylesheet" href="bower_components/ngQuickDate/dist/ng-quick-date-default-theme.css"/>
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css"/>
+  <link rel="stylesheet" href="bower_components/FroalaWysiwygEditor/css/froala_editor.min.css"/>
+  <link rel="stylesheet" href="bower_components/FroalaWysiwygEditor/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css"/>
+  <link rel="stylesheet" href="bower_components/fullcalendar/fullcalendar.css"/>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -30,6 +30,7 @@
   <script src="bower_components/modernizr/modernizr.js"></script>
   <!-- endbuild -->
 
+  <base href="/">
 </head>
 <body>
 <!--[if lt IE 10]>
@@ -49,25 +50,27 @@
         <li class="nav-link more"><a href="javascript:void(0)">about</a>
           <ul class="submenu">
             <li><a ui-sref="circlek.general">Circle K</a></li>
-            <li><a ui-sref="district">District</a></li>
             <li><a ui-sref="division">Division</a></li>
             <li><a ui-sref="club.general">Club</a></li>
           </ul>
         </li>
-        <li class="nav-link more"><a ui-sref="calendar">events</a>
+        <li class="nav-link"><a ui-sref="calendar">calendar</a></li>
+        <li class="nav-link more"><a ui-sref="district">district</a>
           <ul class="submenu">
+            <li><a ui-sref="district">About</a></li>
             <li><a target="_blank" href="http://dcon.cnhcirclek.org/">DCON</a></li>
             <li><a target="_blank" href="http://ftc.cnhcirclek.org/">FTC</a></li>
-            <li><a target="_blank" href="http://www.cnhcirclek.org/event/7-crazy_kompetition_for_infants_south/">CKI South</a></li>
+            <li><a target="_blank" href="http://www.cnhcirclek.org/event/7-crazy_kompetition_for_infants_south/">CKI
+              South</a></li>
           </ul>
         </li>
-        <li class="nav-link"><a ui-sref="contact">contact</a></li>
         <li class="nav-link more"><a target="_blank" href="http://www.kiwanis.org/">kiwanis</a>
           <ul class="submenu">
             <li><a target="_blank" href="http://www.kiwanisclublajolla.org/">La Jolla Kiwanis</a></li>
             <li><a target="_blank" href="http://sdsucki.org">SDSU Circle K</a></li>
           </ul>
         </li>
+        <li class="nav-link"><a ui-sref="contact">contact</a></li>
         <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.info">login</a></li>
         <li ng-if="!currentUser" class="nav-link"><a ui-sref="login.register">register</a></li>
         <li ng-if="currentUser" class="nav-link"><a ui-sref="settings">settings</a></li>
@@ -101,7 +104,7 @@
       <a target="_blank" href="http://cnhcirclek.org"><img src="images/logos/cnh.png"></a>
     </div>
     <div class="logo">
-      <a target="_blank" href="https://www.facebook.com/groups/ckiparadise/"><img src="images/logos/paradise.png"></a>
+      <a target="_blank" href="http://paradise.cnhcirclek.org/"><img src="images/logos/paradise.png"></a>
     </div>
   </div>
 

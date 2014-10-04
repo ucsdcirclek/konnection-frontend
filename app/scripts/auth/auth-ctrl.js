@@ -3,6 +3,8 @@
 app
   .controller('AuthCtrl',
     ['$window', '$scope', 'Restangular', 'Auth', '$state', '$rootScope', 'AUTH_EVENTS', function($window, $scope, Restangular, Auth, $state, $rootScope, AUTH_EVENTS) {
+      $scope.setTitle('Login');
+
       $scope.register = function() {
         if ($window.localStorage.token || $window.sessionStorage.token) {
           console.log('Already logged in!');
