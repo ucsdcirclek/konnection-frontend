@@ -42,11 +42,11 @@
     border-bottom: 1px solid $light-gray;
 
     .event-info {
-      @include span-columns(10);
+      @include span-columns(8);
     }
 
     .signup {
-      @include span-columns(2);
+      @include span-columns(4);
     }
 
     p {
