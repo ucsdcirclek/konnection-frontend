@@ -132,7 +132,9 @@ app.controller('EventSummaryCtrl',
      var to = new Date();
      to.setDate(today.getDate() + 3);
 
-     $scope.events = Restangular.all('events').getList({
+     $scope.events = [];
+
+     Restangular.all('events').getList({
        start: today.toISOString().replace(/\.[0-9]*/g, ''),
        end: to.toISOString().replace(/\.[0-9]*/g, '')
      }).then(function(events) {

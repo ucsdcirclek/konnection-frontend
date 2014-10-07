@@ -59,7 +59,7 @@
           Crazy Kompetition for Infants (CKI) is a fundraiser for Pediatric Trauma Program (PTP) through a series of fun, competitive mini-games and relays.
         </p>
       </li>
-      <li ng-repeat="(key, value) in events | orderBy:key[0].start_time | limitTo: 3">
+      <li ng-repeat="(key, value) in events | orderBy:key[0].start_time | limitObjectTo: 3">
         <h5>{{ key | date: 'EEEE' }}</h5>
         <ul>
           <li ng-repeat="event in value">
