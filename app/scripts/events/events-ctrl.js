@@ -130,7 +130,7 @@ app.controller('EventSummaryCtrl',
 
      var today = new Date();
      var to = new Date();
-     to.setDate(today.getDate() + 7);
+     to.setDate(today.getDate() + 3);
 
      $scope.events = Restangular.all('events').getList({
        start: today.toISOString().replace(/\.[0-9]*/g, ''),
@@ -146,11 +146,10 @@ app.controller('EventSummaryCtrl',
        weekday[6] = "Saturday";
 
        var grouped = _.groupBy(events, function(item) {
-         var startTime = new Date(item.start_time);
-         return weekday[startTime.getDay()];
-       });
+         var startTime = new Date(item.start_time).setHours(0, 0, 0, 0);
 
-       console.log(grouped);
+         return startTime;
+       });
 
        $scope.events = grouped;
      });
