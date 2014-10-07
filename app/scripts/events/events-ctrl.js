@@ -53,7 +53,7 @@ app.controller('EventItemCtrl',
      };
 
      $scope.drive = function() {
-       $scope.event.all('register').patch({ driver_status: true }).then(function(data) {
+       $scope.event.all('register').patch({driver_status: true}).then(function(data) {
          $scope.driving = true;
          $scope.$apply();
        });
@@ -120,6 +120,40 @@ app.controller('EventListCtrl',
      };
 
      $scope.eventSources = [$scope.getEvents];
+
+
+   }]);
+
+app.controller('EventSummaryCtrl',
+  ['$scope', 'Events', 'Restangular',
+   function($scope, Events, Restangular) {
+
+     var today = new Date();
+     var to = new Date();
+     to.setDate(today.getDate() + 7);
+
+     $scope.events = Restangular.all('events').getList({
+       start: today.toISOString().replace(/\.[0-9]*/g, ''),
+       end: to.toISOString().replace(/\.[0-9]*/g, '')
+     }).then(function(events) {
+       var weekday = new Array(7);
+       weekday[0]=  "Sunday";
+       weekday[1] = "Monday";
+       weekday[2] = "Tuesday";
+       weekday[3] = "Wednesday";
+       weekday[4] = "Thursday";
+       weekday[5] = "Friday";
+       weekday[6] = "Saturday";
+
+       var grouped = _.groupBy(events, function(item) {
+         var startTime = new Date(item.start_time);
+         return weekday[startTime.getDay()];
+       });
+
+       console.log(grouped);
+
+       $scope.events = grouped;
+     });
 
 
    }]);

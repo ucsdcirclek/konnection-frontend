@@ -25,19 +25,6 @@
         </div>
       </div>
     </li>
-    <li style="background: url(images/slider/bonfire.jpg); background-position: center; background-size: cover;">
-      <div class="content">
-        <div class="text">
-          <h2>Welcome Week Bonfire!</h2>
-          <br/>
-
-          <p>Come out and enjoy some free pizza, drinks, and smores while spending some time with Circle K! Meet some
-            new and returning members on the beautiful beach by a toasty fire!</p>
-
-          <p>Meet up at the Triton Statue at 5PM on Wednesday</p>
-        </div>
-      </div>
-    </li>
     <li style="background: url(images/slider/fall_rush.jpg); background-position: center; background-size: cover;">
       <div class="content">
         <div class="text">
@@ -60,7 +47,7 @@
     <!--<a ui-sref="home.events"><button>Upcoming Events</button></a>-->
     <!--<a ui-sref="home.forms"><button>Membership Forms</button></a>-->
     <!--<div ui-view></div> -->
-    <ul class="week">
+    <ul class="week" ng-controller="EventSummaryCtrl">
       <li class="featured">
         <h5>Featured</h5>
 
@@ -72,48 +59,13 @@
           Crazy Kompetition for Infants (CKI) is a fundraiser for Pediatric Trauma Program (PTP) through a series of fun, competitive mini-games and relays.
         </p>
       </li>
-      <li>
-        <h5>Tuesday</h5>
+      <li ng-repeat="(key, value) in events | limitTo: 3">
+        <h5>{{ key }}</h5>
         <ul>
-          <li>
-            <p class="title">Feeding America</p>
+          <li ng-repeat="event in value">
+            <p class="title">{{ event.title }}</p>
 
-            <p class="date">2:00 - 5:00PM</p>
-          </li>
-          <li>
-            <p class="title">Reality Changers</p>
-
-            <p class="date">5:30 - 9:30PM</p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h5>Wednesday</h5>
-        <ul>
-          <li>
-            <p class="title">Reality Changers</p>
-
-            <p class="date">5:30 - 9:30PM</p>
-          </li>
-          <li>
-            <p class="title">Welcome Week Bonfire</p>
-
-            <p class="date">5:30 - 6:30PM</p>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <h5>Thursday</h5>
-        <ul>
-          <li>
-            <p class="title">Campus Trash Cleanup</p>
-
-            <p class="date">4:00 - 5:00PM</p>
-          </li>
-          <li>
-            <p class="title">Reality Changers</p>
-
-            <p class="date">5:30 - 9:30PM</p>
+            <p class="date">{{ event.start_time | date: " h:mma to " }}{{ event.end_time | date : 'h:mma' }}</p>
           </li>
         </ul>
       </li>
