@@ -10,6 +10,10 @@ ul.week {
       border-bottom: 1px solid white;
     }
 
+    .title {
+      font-size: 1em;
+    }
+
     .info {
       text-align: center;
     }
@@ -38,6 +42,7 @@ ul.week {
     }
 
     .title {
+      font-size: .9em;
       text-align: center;
       font-weight: bold;
       margin-bottom: 0;
@@ -46,6 +51,7 @@ ul.week {
     .date {
       text-align: center;
       font-style: italic;
+      font-size: .8em;
     }
 
     .info {
