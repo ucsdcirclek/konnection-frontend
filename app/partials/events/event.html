@@ -1,32 +1,8 @@
 <div id="event">
-  <div id="navigator" style="border-bottom-left-radius: 10px;">
-    <h3>Monday 9/29</h3>
-    <ul>
-      <li>Boys & Girls Club</li>
-    </ul>
-
-    <h3>Tuesday 9/30</h3>
-    <ul>
-      <li>Feeding America</li>
-      <li>Reality Changers</li>
-    </ul>
-
-    <h3>Wednesday 10/1</h3>
-    <ul>
-      <li>Reality Changers</li>
-      <li>Welcome Week Bonfire</li>
-    </ul>
-
-    <h3>Thursday 10/2</h3>
-    <ul>
-      <li>Campus Trash Cleanup</li>
-      <li>Reality Changers</li>
-    </ul>
-
-    <h3>Friday 10/3</h3>
-    <ul>
-      <li>Bishops High School</li>
-      <li>Beach Clean Up</li>
+  <div id="navigator" style="border-bottom-left-radius: 10px;" ng-controller="EventWeekCtrl">
+    <ul ng-repeat="(key, value) in events | orderBy:key[0].start_time | limitObjectTo: 7">
+      <h3>{{ key | date: 'EEEE M/d' }}</h3>
+      <li ng-repeat="event in value">{{ event.title }}</li>
     </ul>
     <br />
     <button ui-sref="calendar">Back to Calendar</button>
