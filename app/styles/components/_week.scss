@@ -46,6 +46,15 @@ ul.week {
       text-align: center;
       font-weight: bold;
       margin-bottom: 0;
+
+      a {
+        @extend a;
+        color: $dark-gray;
+
+        &:hover {
+          color: black;
+        }
+      }
     }
 
     .date {

@@ -23,6 +23,15 @@
       padding-bottom: .2em;
       border-bottom: 1px dotted $light-gray;
       margin-bottom: .2em;
+
+      a {
+        @extend a;
+        color: $dark-gray;
+
+        &:hover {
+          color: black;
+        }
+      }
     }
 
   }
