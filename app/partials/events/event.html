@@ -86,7 +86,7 @@
             </div>
 
             <p class="name">{{ guest.name }}</p>
-            <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ registration.phone | tel }}</p>
+            <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ guest.phone | tel }}</p>
           </li>
         </ul>
       </div>
