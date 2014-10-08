@@ -44,7 +44,8 @@ app.controller('EventItemCtrl',
      };
 
      $scope.registerGuest = function(firstName, lastName, phoneNum) {
-       $scope.event.post("registerGuest", { first_name: firstName, last_name: lastName, phone: phoneNum }).then(function(data) {
+       $scope.event.post("registerGuest",
+         {first_name: firstName, last_name: lastName, phone: phoneNum}).then(function(data) {
          $scope.registered = true;
          $scope.event.registrations.push({name: firstName + ' ' + lastName});
        });
@@ -53,6 +54,7 @@ app.controller('EventItemCtrl',
      $scope.unregister = function() {
        $scope.event.post("unregister").then(function() {
          $scope.registered = false;
+         $scope.driving = false;
          $scope.event.registrations = Events.get($stateParams.id).then(function(data) {
            $scope.event.registrations = data.getList('registrations').then(function(registrations) {
              $scope.event.registrations = registrations;
@@ -76,6 +78,11 @@ app.controller('EventItemCtrl',
        Restangular.all('admin').one('events',
          $stateParams.id).getList('registrations').then(function(registrations) {
            $scope.event.registrations = registrations;
+         });
+
+       Restangular.all('admin').one('events',
+         $stateParams.id).getList('guests').then(function(guests) {
+           $scope.event.guests = guests;
          });
      };
 
@@ -148,7 +155,7 @@ app.controller('EventSummaryCtrl',
        end: to.toISOString().replace(/\.[0-9]*/g, '')
      }).then(function(events) {
        var weekday = new Array(7);
-       weekday[0]=  "Sunday";
+       weekday[0] = "Sunday";
        weekday[1] = "Monday";
        weekday[2] = "Tuesday";
        weekday[3] = "Wednesday";
@@ -183,7 +190,7 @@ app.controller('EventWeekCtrl',
        end: to.toISOString().replace(/\.[0-9]*/g, '')
      }).then(function(events) {
        var weekday = new Array(7);
-       weekday[0]=  "Sunday";
+       weekday[0] = "Sunday";
        weekday[1] = "Monday";
        weekday[2] = "Tuesday";
        weekday[3] = "Wednesday";
