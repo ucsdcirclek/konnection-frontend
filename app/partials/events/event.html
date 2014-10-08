@@ -48,6 +48,17 @@
             <p class="name">{{ registration.name }}</p>
             <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ registration.phone | tel }}</p>
           </li>
+          <li class="avatar small" ng-repeat="guest in event.guests">
+
+            <div class="avatar-wrapper">
+              <img src="https://www.drupal.org/files/profile_default.jpg">
+              <i class="overlay fa fa-male"></i>
+              <i ng-if="guest.driver_status" class="overlay fa fa-car"></i>
+            </div>
+
+            <p class="name">{{ guest.name }}</p>
+            <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ registration.phone | tel }}</p>
+          </li>
         </ul>
       </div>
     </div>

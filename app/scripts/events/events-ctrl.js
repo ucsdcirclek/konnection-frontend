@@ -7,7 +7,7 @@ app.controller('EventItemCtrl',
      $scope.event = Events.get($stateParams.id).then(function(data) {
        $scope.event = data;
        $scope.setTitle(data.title);
-       $scope.event.registrations = data.getList('registrations').then(function(registrations) {
+       data.getList('registrations').then(function(registrations) {
          $scope.event.registrations = registrations;
 
          _.forEach(registrations, function(registration) {
@@ -21,6 +21,8 @@ app.controller('EventItemCtrl',
 
          return registrations;
        });
+
+       $scope.event.guests = data.getList('guests').$object;
 
        $scope.event.contact = data.customGET('contact').$object;
 
@@ -64,7 +66,7 @@ app.controller('EventItemCtrl',
          return;
        }
 
-       $scope.event.registrations = Restangular.all('admin').one('events',
+       Restangular.all('admin').one('events',
          $stateParams.id).getList('registrations').then(function(registrations) {
            $scope.event.registrations = registrations;
          });
