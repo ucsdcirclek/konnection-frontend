@@ -43,6 +43,13 @@ app.controller('EventItemCtrl',
        });
      };
 
+     $scope.registerGuest = function(firstName, lastName, phoneNum) {
+       $scope.event.post("registerGuest", { first_name: firstName, last_name: lastName, phone: phoneNum }).then(function(data) {
+         $scope.registered = true;
+         $scope.event.registrations.push({name: firstName + ' ' + lastName});
+       });
+     };
+
      $scope.unregister = function() {
        $scope.event.post("unregister").then(function() {
          $scope.registered = false;
