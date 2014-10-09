@@ -268,6 +268,11 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
 
       Session.create(token, data.id, roles);
       $rootScope.setCurrentUser(data);
+    },function(response) {
+      if (response.status == 401) {
+        localStorage.clear();
+        sessionStorage.clear();
+      }
     });
   }
 
