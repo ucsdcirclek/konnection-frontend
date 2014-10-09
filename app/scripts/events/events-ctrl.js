@@ -3,10 +3,18 @@
 app.controller('EventItemCtrl',
   ['$scope', '$stateParams', 'Events', '$state', 'Restangular',
    function($scope, $stateParams, Events, $state, Restangular) {
+     $scope.open = false;
 
      $scope.event = Events.get($stateParams.id).then(function(data) {
        $scope.event = data;
        $scope.setTitle(data.title);
+       var now = new Date();
+       var closeTime = new Date(data.close_time);
+
+       if (now < closeTime) {
+         $scope.open = true;
+       }
+
        data.getList('registrations').then(function(registrations) {
          $scope.event.registrations = registrations;
 

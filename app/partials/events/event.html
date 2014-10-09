@@ -22,7 +22,7 @@
         </ul>
       </div>
 
-      <div class="signup">
+      <div ng-if="open" class="signup">
         <div ng-if="!registered && !currentUser" class="modal">
           <label for="guestRegistration">
             <div class="btn"><i class="fa fa-check"></i> Guest Signup</div>
