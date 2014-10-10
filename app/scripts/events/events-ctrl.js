@@ -7,6 +7,7 @@ app.controller('EventItemCtrl',
 
      $scope.event = Events.get($stateParams.id).then(function(data) {
        $scope.event = data;
+       $scope.event.registrations = [];
        $scope.setTitle(data.title);
        var now = new Date();
        var closeTime = new Date(data.close_time);
@@ -16,21 +17,35 @@ app.controller('EventItemCtrl',
        }
 
        data.getList('registrations').then(function(registrations) {
-         $scope.event.registrations = registrations;
-
          _.forEach(registrations, function(registration) {
+
+           $scope.event.registrations.push({
+             name: registration.name,
+             driver_status: registration.driver_status,
+             guest_status: false,
+             created_at: registration.created_at
+           });
 
            if ($scope.currentUser && registration.user_id == $scope.currentUser.id) {
              $scope.registered = true;
              $scope.driving = registration.driver_status;
-             $scope.$apply();
            }
          });
 
-         return registrations;
        });
 
-       $scope.event.guests = data.getList('guests').$object;
+       $scope.event.guests = data.getList('guests').then(function(guests) {
+         _.forEach(guests, function(guest) {
+
+           $scope.event.registrations.push({
+             name: guest.name,
+             driver_status: guest.driver_status,
+             guest_status: true,
+             created_at: guest.created_at
+           });
+
+         });
+       });
 
        $scope.event.contact = data.customGET('contact').$object;
 
@@ -83,14 +98,38 @@ app.controller('EventItemCtrl',
          return;
        }
 
+       $scope.event.registrations = [];
+
        Restangular.all('admin').one('events',
          $stateParams.id).getList('registrations').then(function(registrations) {
-           $scope.event.registrations = registrations;
+
+           _.forEach(registrations, function(registration) {
+
+             $scope.event.registrations.push({
+               name: registration.name,
+               phone: registration.phone,
+               driver_status: registration.driver_status,
+               guest_status: false,
+               created_at: registration.created_at
+             });
+
+           });
          });
 
        Restangular.all('admin').one('events',
-         $stateParams.id).getList('guests').then(function(guests) {
-           $scope.event.guests = guests;
+         $stateParams.id).getList('guests').then(function(registrations) {
+
+           _.forEach(registrations, function(registration) {
+
+             $scope.event.registrations.push({
+               name: registration.name,
+               phone: registration.phone,
+               driver_status: registration.driver_status,
+               guest_status: true,
+               created_at: registration.created_at
+             });
+
+           });
          });
      };
 

@@ -67,26 +67,16 @@
       <div class="registrations">
         <h4>Who's going</h4>
         <ul>
-          <li class="avatar small" ng-repeat="registration in event.registrations">
+          <li class="avatar small" ng-repeat="registration in event.registrations | orderBy:'created_at'">
 
             <div class="avatar-wrapper">
               <img src="https://www.drupal.org/files/profile_default.jpg">
+              <i ng-if="registration.guest_status" class="overlay fa fa-male"></i>
               <i ng-if="registration.driver_status" class="overlay fa fa-car"></i>
             </div>
 
             <p class="name">{{ registration.name }}</p>
             <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ registration.phone | tel }}</p>
-          </li>
-          <li class="avatar small" ng-repeat="guest in event.guests">
-
-            <div class="avatar-wrapper">
-              <img src="https://www.drupal.org/files/profile_default.jpg">
-              <i class="overlay fa fa-male"></i>
-              <i ng-if="guest.driver_status" class="overlay fa fa-car"></i>
-            </div>
-
-            <p class="name">{{ guest.name }}</p>
-            <p ng-if="isAuthorized(userRoles.officer)" class="name">{{ guest.phone | tel }}</p>
           </li>
         </ul>
       </div>
