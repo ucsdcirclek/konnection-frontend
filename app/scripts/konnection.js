@@ -25,7 +25,7 @@ app.constant('AUTH_EVENTS', {
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_ROLES',
             function($stateProvider, $urlRouterProvider, $locationProvider, USER_ROLES) {
-              $locationProvider.html5Mode( true );
+              $locationProvider.html5Mode(true);
 
               $stateProvider
                 .state('home', {
@@ -81,7 +81,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                 .state('admin.home', {
                   url: '',
                   templateUrl: 'partials/admin/home.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Admin');
                   }]
                 })
@@ -94,6 +94,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                   url: '/create',
                   templateUrl: 'partials/admin/events/create.html',
                   controller: 'EventCreateCtrl'
+                })
+                .state('admin.events.update', {
+                  url: '/:id',
+                  templateUrl: 'partials/admin/events/update.html',
+                  controller: 'EventUpdateCtrl'
                 })
                 .state('admin.posts', {
                   abstract: true,
@@ -114,35 +119,35 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                   url: '/about',
                   templateUrl: 'partials/about/circlek/circlek.html',
                   abstract: true,
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('About');
                   }]
                 })
                 .state('circlek.general', {
                   url: '',
                   templateUrl: 'partials/about/circlek/circlek.general.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Circle K');
                   }]
                 })
                 .state('circlek.history', {
                   url: '/history',
                   templateUrl: 'partials/about/circlek/circlek.history.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Circle K History');
                   }]
                 })
                 .state('circlek.structure', {
                   url: '/structure',
                   templateUrl: 'partials/about/circlek/circlek.structure.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Circle K Structure');
                   }]
                 })
                 .state('circlek.tenets', {
                   url: '/tenets',
                   templateUrl: 'partials/about/circlek/circlek.tenets.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Circle K Tenets');
                   }]
                 })
@@ -150,7 +155,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                   abstract: true,
                   url: '/club',
                   templateUrl: 'partials/about/club/club.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('About Our Club');
                   }]
                 })
@@ -173,14 +178,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                 .state('district', {
                   url: '/district',
                   templateUrl: 'partials/about/district/district.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Our District');
                   }]
                 })
                 .state('division', {
                   url: '/division',
                   templateUrl: 'partials/about/division/division.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Our Division');
                   }]
                 })
@@ -191,7 +196,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                 .state('contact', {
                   url: '/contact',
                   templateUrl: 'partials/contact/contact.html',
-                  controller: ['$scope', function($scope){
+                  controller: ['$scope', function($scope) {
                     $scope.setTitle('Contact Us');
                   }]
                 })
@@ -268,7 +273,7 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
 
       Session.create(token, data.id, roles);
       $rootScope.setCurrentUser(data);
-    },function(response) {
+    }, function(response) {
       if (response.status == 401) {
         localStorage.clear();
         sessionStorage.clear();

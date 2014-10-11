@@ -1,0 +1,32 @@
+<div id="event-create" class="wrapper">
+  <h2>Update an Event</h2>
+  <br/>
+
+  <form ng-submit="update()">
+    <label for="title">Title</label>
+    <input type="text" name="title" ng-model="event.title" placeholder="Title">
+
+    <label for="description">Description</label>
+    <textarea name="description" placeholder="Description" ng-model="event.description"></textarea>
+
+    <label for="event_location">Event Location</label>
+    <input type="text" name="event_location" placeholder="123 A Street" ng-model="event.event_location">
+
+    <label for="meeting_location">Meeting Location</label>
+    <input type="text" name="meetingLocation" placeholder="Sun God Lawn" ng-model="event.meeting_location">
+
+    <label for="startDate">Event Start</label>
+    <quick-datepicker ng-model="event.start_time"></quick-datepicker>
+
+    <label for="endDate">Event End</label>
+    <quick-datepicker ng-model="event.end_time"></quick-datepicker>
+
+    <label for="closeDate">Signup Close</label>
+    <quick-datepicker ng-model="event.close_time"></quick-datepicker>
+
+    <br/>
+    <br/>
+
+    <button type="submit">Update</button>
+  </form>
+</div>

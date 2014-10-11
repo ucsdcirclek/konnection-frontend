@@ -69,9 +69,9 @@ app.controller('EventItemCtrl',
      $scope.registerGuest = function(firstName, lastName, phoneNum) {
        $scope.event.post("registerGuest",
          {first_name: firstName, last_name: lastName, phone: phoneNum}).then(function(data) {
-         $scope.registered = true;
-         $scope.event.registrations.push({name: firstName + ' ' + lastName});
-       });
+           $scope.registered = true;
+           $scope.event.registrations.push({name: firstName + ' ' + lastName});
+         });
      };
 
      $scope.unregister = function() {
@@ -283,7 +283,27 @@ app.controller('EventCreateCtrl',
           console.log('There was an error!');
         }
       );
-    }
+    };
 
     $scope.create = create;
+  }]);
+
+app.controller('EventUpdateCtrl',
+  ['$scope', '$state', '$stateParams', 'Restangular', function($scope, $state, $stateParams, Restangular) {
+
+    $scope.event = Restangular.all('admin').one('events', $stateParams.id).get().$object;
+
+    $scope.update = function() {
+
+      $scope.event.patch().then(
+        function(result) {
+          $state.go('admin.home');
+        },
+        function() {
+          console.log('There was an error!');
+        }
+      );
+
+    };
+
   }]);

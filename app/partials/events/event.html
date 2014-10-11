@@ -96,7 +96,8 @@
 
         <p class="info">{{ event.contact.phone | tel }}</p>
       </div>
-      <button ng-if="isAuthorized(userRoles.officer)" type="button" ng-click="chair()">Chair Event</button>
+      <button ng-if="isAuthorized(userRoles.officer)" type="button" ng-click="chair()">Chair Event</button><br />
+      <button ng-if="isAuthorized(userRoles.officer)" type="button" ui-sref="admin.events.update({id: event.id})">Edit Event</button>
     </div>
 
   </div>
