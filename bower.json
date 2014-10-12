@@ -14,7 +14,8 @@
     "font-awesome": "~4.2.0",
     "angular-froala": "~1.2.1",
     "angular-carousel": "~0.2.5",
-    "angular-ui-calendar": "~0.8.1"
+    "angular-ui-calendar": "~0.8.1",
+    "animate.css": "~3.2.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.x"

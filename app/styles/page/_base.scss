@@ -14,6 +14,14 @@ body {
   margin: 0 auto;
 }
 
+div[ui-view].ng-enter {
+  animation: fadeIn .25s;
+}
+
+div[ui-view].ng-leave {
+  animation: zoomOut .3s;
+}
+
 #container{
   @include span-columns(12);
   background: $cream;
