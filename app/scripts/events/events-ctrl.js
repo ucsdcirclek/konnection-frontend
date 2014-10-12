@@ -295,7 +295,17 @@ app.controller('EventUpdateCtrl',
 
     $scope.update = function() {
 
-      $scope.event.patch().then(
+      var values = {
+        title: $scope.event.title,
+        description: $scope.event.description,
+        event_location: $scope.event.event_location,
+        meeting_location: $scope.event.meeting_location,
+        start_time: (new Date($scope.event.start_time)).toISOString().replace(/\.[0-9]*/g, ''),
+        end_time: (new Date($scope.event.end_time)).toISOString().replace(/\.[0-9]*/g, ''),
+        close_time: (new Date($scope.event.close_time)).toISOString().replace(/\.[0-9]*/g, '')
+      };
+
+      $scope.event.patch(values).then(
         function(result) {
           $state.go('admin.home');
         },
