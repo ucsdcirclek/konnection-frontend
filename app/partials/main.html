@@ -75,9 +75,9 @@
   <div id="sidebar">
     <div ng-if="currentUser">
       <h2>Welcome, {{ currentUser.first_name }}!</h2>
-      <ul>
-        <li><a ui-sref="settings">Account Settings</a></li>
-      </ul>
+      <!--<ul>-->
+        <!--<li><button ui-sref="settings">Account Settings</button></li>-->
+      <!--</ul>-->
     </div>
     <div ng-if="!currentUser">
       <h2>Welcome!</h2>
@@ -87,7 +87,9 @@
           ui-sref="login.register">register</a>!
       </p>
     </div>
-    <h2>Social Media</h2>
+    <button ui-sref="membership" class="pulse-repeat red">Become a Member</button>
+    <br />
+    <h2 style="margin-top: 10px;">Social Media</h2>
 
     <div class="social-media">
       <a href="https://facebook.com/ucsdcirclek"><i class="fa fa-3x fa-facebook-square"></i></a>

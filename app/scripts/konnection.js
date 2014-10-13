@@ -33,6 +33,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                   templateUrl: 'partials/main.html',
                   controller: 'MainCtrl'
                 })
+                .state('membership', {
+                  url: '/membership',
+                  templateUrl: 'partials/about/form/membership.html',
+                  controller: ['$scope', function($scope) {
+                    $scope.setTitle('Become a Member');
+                  }]
+                })
                 .state('login', {
                   abstract: true,
                   url: '/login',

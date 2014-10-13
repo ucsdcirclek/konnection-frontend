@@ -1,5 +1,6 @@
 button,
-input[type="submit"] {
+input[type="submit"],
+.button {
   @extend %button;
   @include appearance(none);
   border: none;
@@ -7,4 +8,12 @@ input[type="submit"] {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+
+  &.red {
+    background-color: $red;
+
+    &:hover {
+      background-color: darken($red, 5%);
+    }
+  }
 }
