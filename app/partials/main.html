@@ -60,7 +60,7 @@
         </p>
       </li>
       <li ng-repeat="(key, value) in events | orderBy:key[0].start_time | limitObjectTo: 3">
-        <h5>{{ key | date: 'EEEE' }}</h5>
+        <h5>{{ key | amDateFormat: 'dddd' }}</h5>
         <ul>
           <li ng-repeat="event in value">
             <p class="title"><a ui-sref="event({id: event.id})">{{ event.title }}</a></p>

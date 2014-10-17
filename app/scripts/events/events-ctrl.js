@@ -9,8 +9,8 @@ app.controller('EventItemCtrl',
        $scope.event = data;
        $scope.event.registrations = [];
        $scope.setTitle(data.title);
-       var now = new Date();
-       var closeTime = new Date(data.close_time);
+       var now = new moment();
+       var closeTime = new moment(data.close_time);
 
        if (now < closeTime) {
          $scope.open = true;
@@ -191,9 +191,9 @@ app.controller('EventSummaryCtrl',
   ['$scope', 'Events', 'Restangular',
    function($scope, Events, Restangular) {
 
-     var today = new Date();
-     var to = new Date();
-     to.setDate(today.getDate() + 3);
+     var today = new moment();
+     var to = new moment();
+     to.date(today.date() + 3);
 
      $scope.events = [];
 
@@ -211,7 +211,7 @@ app.controller('EventSummaryCtrl',
        weekday[6] = "Saturday";
 
        var grouped = _.groupBy(events, function(item) {
-         var startTime = new Date(item.start_time).setHours(0, 0, 0, 0);
+         var startTime = new moment(item.start_time).hours(0, 0, 0, 0);
 
          return startTime;
        });
@@ -226,9 +226,9 @@ app.controller('EventWeekCtrl',
   ['$scope', 'Events', 'Restangular',
    function($scope, Events, Restangular) {
 
-     var today = new Date();
-     var to = new Date();
-     to.setDate(today.getDate() + 7);
+     var today = new moment();
+     var to = new moment();
+     to.date(today.date() + 7);
 
      $scope.events = [];
 
@@ -246,7 +246,7 @@ app.controller('EventWeekCtrl',
        weekday[6] = "Saturday";
 
        var grouped = _.groupBy(events, function(item) {
-         var startTime = new Date(item.start_time).setHours(0, 0, 0, 0);
+         var startTime = new moment(item.start_time).hours(0, 0, 0, 0);
 
          return startTime;
        });
