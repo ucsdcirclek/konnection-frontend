@@ -1,8 +1,8 @@
 <div id="event">
   <div id="navigator" style="border-bottom-left-radius: 10px;" ng-controller="EventWeekCtrl">
-    <ul ng-repeat="(key, value) in events | orderBy:key[0].start_time | limitObjectTo: 7">
-      <h3>{{ key | amDateFormat: 'dddd M/D' }}</h3>
-      <li ng-repeat="event in value"><a ui-sref="event({id: event.id})">{{ event.title }}</a></li>
+    <ul ng-repeat="result in results | limitObjectTo: 7">
+      <h3>{{ result.date | amDateFormat: 'dddd M/D' }}</h3>
+      <li ng-repeat="event in result.events"><a ui-sref="event({id: event.id})">{{ event.title }}</a></li>
     </ul>
     <br />
     <button ui-sref="calendar">Back to Calendar</button>

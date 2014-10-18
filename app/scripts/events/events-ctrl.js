@@ -201,22 +201,32 @@ app.controller('EventSummaryCtrl',
        start: today.toISOString().replace(/\.[0-9]*/g, ''),
        end: to.toISOString().replace(/\.[0-9]*/g, '')
      }).then(function(events) {
-       var weekday = new Array(7);
-       weekday[0] = "Sunday";
-       weekday[1] = "Monday";
-       weekday[2] = "Tuesday";
-       weekday[3] = "Wednesday";
-       weekday[4] = "Thursday";
-       weekday[5] = "Friday";
-       weekday[6] = "Saturday";
 
+       // Group events by start time
        var grouped = _.groupBy(events, function(item) {
-         var startTime = new moment(item.start_time).hours(0, 0, 0, 0);
+         var startTime = new moment(item.start_time).hours(0).minutes(0).seconds(0).milliseconds(0);
 
          return startTime;
        });
 
-       $scope.events = grouped;
+       // Array of results
+       var results = [];
+
+       // Sort by date difference
+       var comp = function (a, b)  { return new moment(a) - new moment(b); };
+
+       // Sort date keys and create new array of days
+       Object.keys(grouped)
+         .sort(comp)
+         .forEach(function(v, i) {
+           var day = {
+             date: v,
+             events: grouped[v]
+           };
+           results.push(day);
+         });
+
+       $scope.results = results;
      });
 
 
@@ -226,32 +236,44 @@ app.controller('EventWeekCtrl',
   ['$scope', 'Events', 'Restangular',
    function($scope, Events, Restangular) {
 
+     // Set time parameters to get from now to 7 days forward
      var today = new moment();
      var to = new moment();
      to.date(today.date() + 7);
 
      $scope.events = [];
 
+     // Get events
      Restangular.all('events').getList({
        start: today.toISOString().replace(/\.[0-9]*/g, ''),
        end: to.toISOString().replace(/\.[0-9]*/g, '')
      }).then(function(events) {
-       var weekday = new Array(7);
-       weekday[0] = "Sunday";
-       weekday[1] = "Monday";
-       weekday[2] = "Tuesday";
-       weekday[3] = "Wednesday";
-       weekday[4] = "Thursday";
-       weekday[5] = "Friday";
-       weekday[6] = "Saturday";
 
+       // Group events by start time
        var grouped = _.groupBy(events, function(item) {
-         var startTime = new moment(item.start_time).hours(0, 0, 0, 0);
+         var startTime = new moment(item.start_time).hours(0).minutes(0).seconds(0).milliseconds(0);
 
          return startTime;
        });
 
-       $scope.events = grouped;
+       // Array of results
+       var results = [];
+
+       // Sort by date difference
+       var comp = function (a, b)  { return new moment(a) - new moment(b); };
+
+       // Sort date keys and create new array of days
+       Object.keys(grouped)
+         .sort(comp)
+         .forEach(function(v, i) {
+           var day = {
+             date: v,
+             events: grouped[v]
+           };
+           results.push(day);
+         });
+
+       $scope.results = results;
      });
 
 
