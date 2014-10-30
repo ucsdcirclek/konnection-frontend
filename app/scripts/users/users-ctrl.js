@@ -2,6 +2,7 @@
 
 app.controller('UserUpdateCtrl',
   ['$scope', '$stateParams', '$state', 'Restangular', function($scope, $stateParams, $state, Restangular) {
+    $scope.avatar = null;
 
     $scope.user = Restangular.one('self').get().then(function (data) {
       $scope.user = data;
@@ -17,6 +18,17 @@ app.controller('UserUpdateCtrl',
       };
 
       Restangular.one('self').patch(input).then(function(data) {
+        console.log('Update successful.');
+        $state.go('home');
+      });
+    };
+
+    $scope.updateAvatar = function(avatarData) {
+      var input = {
+        avatar: avatarData
+      };
+
+      Restangular.one('self').patch(input).then(function() {
         console.log('Update successful.');
         $state.go('home');
       });
