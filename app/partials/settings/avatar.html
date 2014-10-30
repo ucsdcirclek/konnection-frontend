@@ -1,0 +1,16 @@
+<div ng-if="currentUser" id="settings" class="wrapper">
+  <h2>Avatar Settings</h2>
+  <form>
+
+    <label for="avatar">Set an avatar</label>
+    <image-crop
+        data-width="200"
+        data-height="200"
+        data-shape="circle"
+        data-result="avatar"
+        data-step="imageCropStep"
+        ></image-crop>
+
+    <input class="button" type="submit" ng-click="updateAvatar(avatar)">
+  </form>
+</div>

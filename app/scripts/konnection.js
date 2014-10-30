@@ -2,7 +2,7 @@
 
 var app = angular.module('konnection',
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate', 'froala',
-   'angular-carousel', 'ui.calendar', 'angularMoment'])
+   'angular-carousel', 'ui.calendar', 'angularMoment', 'ImageCropper'])
   .value('froalaConfig', {
     inlineMode: false
   });
@@ -70,8 +70,24 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
                   controller: 'EventListCtrl'
                 })
                 .state('settings', {
+                  abstract: true,
                   url: '/settings',
+                  templateUrl: 'partials/settings/main.html',
+                  data: {
+                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.officer, USER_ROLES.member]
+                  }
+                })
+                .state('settings.account', {
+                  url: '',
                   templateUrl: 'partials/settings/settings.html',
+                  controller: 'UserUpdateCtrl',
+                  data: {
+                    authorizedRoles: [USER_ROLES.admin, USER_ROLES.officer, USER_ROLES.member]
+                  }
+                })
+                .state('settings.avatar', {
+                  url: '/avatar',
+                  templateUrl: 'partials/settings/avatar.html',
                   controller: 'UserUpdateCtrl',
                   data: {
                     authorizedRoles: [USER_ROLES.admin, USER_ROLES.officer, USER_ROLES.member]

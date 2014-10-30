@@ -295,3 +295,39 @@
     }
   }
 }
+
+.nav-tab {
+  background-color: white;
+  width: 100%;
+  border-bottom: 1px solid $medium-gray;
+
+  ul {
+    display: inline-block;
+    list-style-type: none;
+    width: 100%;
+    padding: 1em;
+
+
+
+    li {
+      display: inline;
+      padding: .5em;
+      border-right: 1px solid $light-gray;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &.title {
+        font-weight: bold;
+        border-right: none;
+
+        &:after {
+          content: ':';
+        }
+      }
+    }
+  }
+
+
+}
