@@ -35,7 +35,8 @@ app
 
       $scope.login = function() {
         if ($window.localStorage.token || $window.sessionStorage.token) {
-          console.log('Already logged in!');
+          localStorage.clear();
+          sessionStorage.clear();
           return;
         }
 

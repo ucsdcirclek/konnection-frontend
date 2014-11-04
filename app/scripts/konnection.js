@@ -282,7 +282,7 @@ app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, 
   });
 
   if (sessionStorage.token || localStorage.token) {
-    var token = typeof sessionStorage.token === 'undefined' ? localStorage.token : sessionStorage.token
+    var token = typeof sessionStorage.token === 'undefined' ? localStorage.token : sessionStorage.token;
     Restangular.setDefaultHeaders({'X-Auth-Token': token});
 
     var user = Restangular.one('self').get().then(function(data) {
