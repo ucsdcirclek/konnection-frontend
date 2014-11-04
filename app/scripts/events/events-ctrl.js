@@ -23,7 +23,8 @@ app.controller('EventItemCtrl',
              name: registration.name,
              driver_status: registration.driver_status,
              guest_status: false,
-             created_at: registration.created_at
+             created_at: registration.created_at,
+             avatar: registration.avatar
            });
 
            if ($scope.currentUser && registration.user_id == $scope.currentUser.id) {
@@ -41,7 +42,8 @@ app.controller('EventItemCtrl',
              name: guest.name,
              driver_status: guest.driver_status,
              guest_status: true,
-             created_at: guest.created_at
+             created_at: guest.created_at,
+             avatar: 'https://www.drupal.org/files/profile_default.jpg'
            });
 
          });
@@ -61,7 +63,7 @@ app.controller('EventItemCtrl',
 
        $scope.event.post("register").then(function(data) {
          $scope.registered = true;
-         $scope.event.registrations.push({name: $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name});
+         $scope.event.registrations.push({name: $scope.currentUser.first_name + ' ' + $scope.currentUser.last_name, avatar: $scope.currentUser.avatar});
          $scope.$apply();
        });
      };

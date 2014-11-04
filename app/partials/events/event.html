@@ -69,7 +69,7 @@
           <li class="avatar small" ng-repeat="registration in event.registrations | orderBy:'created_at'">
 
             <div class="avatar-wrapper">
-              <img src="https://www.drupal.org/files/profile_default.jpg">
+              <img ng-src="{{ registration.avatar }}">
               <i ng-if="registration.guest_status" class="overlay fa fa-male"></i>
               <i ng-if="registration.driver_status" class="overlay fa fa-car"></i>
             </div>
@@ -89,7 +89,7 @@
         <div class="image">
 
         </div>
-        <img src="https://www.drupal.org/files/profile_default.jpg">
+        <img ng-src="{{ event.contact.avatar }}">
 
         <p class="name">{{ event.contact.first_name }} {{ event.contact.last_name }}</p>
 
