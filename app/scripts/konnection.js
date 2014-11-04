@@ -2,7 +2,7 @@
 
 var app = angular.module('konnection',
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngQuickDate', 'froala',
-   'angular-carousel', 'ui.calendar', 'angularMoment', 'ImageCropper'])
+   'angular-carousel', 'ui.calendar', 'angularMoment', 'ImageCropper', 'angular-loading-bar'])
   .value('froalaConfig', {
     inlineMode: false
   });
