@@ -4,6 +4,9 @@ app.controller('EventItemCtrl',
   ['$scope', '$stateParams', 'Events', '$state', 'Restangular',
    function($scope, $stateParams, Events, $state, Restangular) {
      $scope.open = false;
+     $scope.driving = false;
+     $scope.photographer = false;
+     $scope.writer = false;
 
      $scope.event = Events.get($stateParams.id).then(function(data) {
        $scope.event = data;
@@ -22,6 +25,8 @@ app.controller('EventItemCtrl',
            $scope.event.registrations.push({
              name: registration.name,
              driver_status: registration.driver_status,
+             photographer_status: registration.photographer_status,
+             writer_status: registration.writer_status,
              guest_status: false,
              created_at: registration.created_at,
              avatar: registration.avatar
@@ -30,6 +35,8 @@ app.controller('EventItemCtrl',
            if ($scope.currentUser && registration.user_id == $scope.currentUser.id) {
              $scope.registered = true;
              $scope.driving = registration.driver_status;
+             $scope.photographer = registration.photographer_status;
+             $scope.writer = registration.writer_status;
            }
          });
 
@@ -41,6 +48,8 @@ app.controller('EventItemCtrl',
            $scope.event.registrations.push({
              name: guest.name,
              driver_status: guest.driver_status,
+             photographer_status: guest.photographer_status,
+             writer_status: guest.writer_status,
              guest_status: true,
              created_at: guest.created_at,
              avatar: 'https://www.drupal.org/files/profile_default.jpg'
@@ -80,6 +89,8 @@ app.controller('EventItemCtrl',
        $scope.event.post("unregister").then(function() {
          $scope.registered = false;
          $scope.driving = false;
+         $scope.photographer = false;
+         $scope.writer = false;
          $scope.event.registrations = Events.get($stateParams.id).then(function(data) {
            $scope.event.registrations = data.getList('registrations').then(function(registrations) {
              $scope.event.registrations = registrations;
@@ -91,7 +102,18 @@ app.controller('EventItemCtrl',
      $scope.drive = function() {
        $scope.event.all('register').patch({driver_status: true}).then(function(data) {
          $scope.driving = true;
-         $scope.$apply();
+       });
+     };
+
+     $scope.photograph = function() {
+       $scope.event.all('register').patch({photographer_status: true}).then(function(data) {
+         $scope.photographer = true;
+       });
+     };
+
+     $scope.write = function() {
+       $scope.event.all('register').patch({writer_status: true}).then(function(data) {
+         $scope.writer = true;
        });
      };
 

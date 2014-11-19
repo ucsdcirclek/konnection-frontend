@@ -53,7 +53,6 @@
 
 
         <button ng-if="!registered && currentUser" ng-click="register()"><i class="fa fa-check"></i> Signup</button>
-        <button ng-if="registered && !driving" ng-click="drive()"><i class="fa fa-car"></i> Drive</button>
         <button ng-if="registered" ng-click="unregister()"><i class="fa fa-close"></i> Signup</button>
       </div>
 
@@ -72,6 +71,8 @@
               <img ng-src="{{ registration.avatar }}">
               <i ng-if="registration.guest_status" class="overlay fa fa-male"></i>
               <i ng-if="registration.driver_status" class="overlay fa fa-car"></i>
+              <i ng-if="registration.photographer_status" class="overlay fa fa-camera"></i>
+              <i ng-if="registration.writer_status" class="overlay fa fa-pencil"></i>
             </div>
 
             <p class="name">{{ registration.name }}</p>
@@ -95,8 +96,24 @@
 
         <p class="info">{{ event.contact.phone | tel }}</p>
       </div>
-      <button ng-if="isAuthorized(userRoles.officer)" type="button" ng-click="chair()">Chair Event</button><br />
-      <button ng-if="isAuthorized(userRoles.officer)" type="button" ui-sref="admin.events.update({id: event.id})">Edit Event</button>
+      <div ng-if="registered">
+        <h6>Volunteer to be a:</h6>
+        <div class="btn-group">
+          <button ng-disabled="driving" ng-click="drive()" type="button"><i class="fa fa-car"></i> Driver</button><br />
+          <button ng-disabled="photographer" ng-click="photograph()" type="button"><i class="fa fa-camera"></i> Photographer</button><br />
+          <button ng-disabled="writer" ng-click="write()" type="button"><i class="fa fa-pencil"></i> Writer</button>
+        </div>
+      </div>
+
+
+      <div ng-if="isAuthorized(userRoles.officer)">
+        <h6>Admin</h6>
+        <div class="btn-group">
+          <button ng-if="isAuthorized(userRoles.officer)" type="button" ng-click="chair()"> Chair Event</button><br />
+          <button ng-if="isAuthorized(userRoles.officer)" type="button" ui-sref="admin.events.update({id: event.id})">Edit Event</button>
+        </div>
+      </div>
+
     </div>
 
   </div>
