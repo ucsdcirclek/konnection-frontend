@@ -69,10 +69,12 @@
 
             <div class="avatar-wrapper">
               <img ng-src="{{ registration.avatar }}">
-              <i ng-if="registration.guest_status" class="overlay fa fa-male"></i>
-              <i ng-if="registration.driver_status" class="overlay fa fa-car"></i>
-              <i ng-if="registration.photographer_status" class="overlay fa fa-camera"></i>
-              <i ng-if="registration.writer_status" class="overlay fa fa-pencil"></i>
+              <div class="overlay">
+                <i ng-if="registration.guest_status" class="fa fa-male"></i>
+                <i ng-if="registration.driver_status" class="fa fa-car"></i>
+                <i ng-if="registration.photographer_status" class="fa fa-camera"></i>
+                <i ng-if="registration.writer_status" class="fa fa-pencil"></i>
+              </div>
             </div>
 
             <p class="name">{{ registration.name }}</p>
