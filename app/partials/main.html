@@ -51,7 +51,7 @@
       <li ng-repeat="result in results | limitObjectTo: 3">
         <h5>{{ result.date | amDateFormat: 'dddd' }}</h5>
         <ul>
-          <li ng-repeat="event in result.events">
+          <li ng-repeat="event in result.events | limitObjectTo: 3">
             <p class="title"><a ui-sref="event({id: event.id})">{{ event.title }}</a></p>
 
             <p class="date">{{ event.start_time | date: " h:mma to " }}{{ event.end_time | date : 'h:mma' }}</p>
