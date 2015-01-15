@@ -239,7 +239,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'USER_R
             }]);
 
 app.run(['Restangular', 'Session', '$rootScope', function(Restangular, Session, $rootScope) {
-  Restangular.setBaseUrl('/api');
+  Restangular.setBaseUrl('http://ucsdcki.org/api');
 
   Restangular.setRequestInterceptor(function(elem, operation) {
     if (operation === "remove") {
