@@ -59,6 +59,19 @@
         </ul>
       </li>
     </ul>
+
+    <ul class="week" ng-controller="PostShowCtrl">
+      <li class="featured">
+        <h5>Posts</h5>
+        <p class="title">Some annoucements.</p>
+      </li> 
+      <li ng-repeat="post in allPosts">
+        <h5>{{ post.title }}</h5>        
+        <p ng-bind-html="post.content"></p>
+        <p class="date">{{ post.created_at | date: "'posted' MMMM d." }}</p>
+      </li>
+    </ul>
+
   </div>
 
   <div id="sidebar">

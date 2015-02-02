@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 app.controller('PostCreateCtrl',
   ['$scope', '$state', 'Restangular', function($scope, $state, Restangular) {
@@ -27,3 +27,14 @@ app.controller('PostCreateCtrl',
 
     $scope.create = create;
   }]);
+
+// Handles annoucements displayed on homepage.
+
+app.controller('PostShowCtrl', ['$scope', 'Restangular', function($scope, Restangular) {
+
+  var basePosts = Restangular.all('posts');
+
+  basePosts.getList().then(function(posts) {
+    $scope.allPosts = posts;
+  });
+}]);
