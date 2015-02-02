@@ -306,6 +306,7 @@ app.controller('EventWeekCtrl',
 app.controller('EventCreateCtrl',
   ['$scope', '$state', 'Restangular', function($scope, $state, Restangular) {
 
+    $scope.event = {};
     $scope.event.startDate = new Date();
     $scope.event.endDate = new Date();
     $scope.event.closeDate = new Date();
