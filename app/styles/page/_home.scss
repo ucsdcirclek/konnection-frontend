@@ -51,4 +51,41 @@
   .pulse-repeat {
     animation: pulse 1s infinite;
   }
+
+  #announcements {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+
+    h3, h4, h5, h6 {
+      color: $base-font-color;
+    }
+
+    h3 {
+      border-bottom: 2px dotted $light-gray;
+
+      small {
+        color: $medium-gray;
+        font-size: .7em;
+      }
+    }
+
+    .date {
+      font-style: italic;
+      color: $medium-gray;
+    }
+
+    article {
+      border-bottom: 2px solid $light-gray;
+      padding: 5px 0;
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+  }
 }

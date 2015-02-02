@@ -60,17 +60,15 @@
       </li>
     </ul>
 
-    <ul class="week" ng-controller="PostShowCtrl">
-      <li class="featured">
-        <h5>Posts</h5>
-        <p class="title">Some annoucements.</p>
-      </li> 
-      <li ng-repeat="post in allPosts">
-        <h5>{{ post.title }}</h5>        
+    <h2>Announcements</h2>
+
+    <div id="announcements" ng-controller="PostShowCtrl">
+      <article ng-repeat="post in allPosts">
+        <h3>{{ post.title }}</h3>
+        <p class="date">{{ post.created_at | date: "MMMM d, yyyy" }}</p>
         <p ng-bind-html="post.content"></p>
-        <p class="date">{{ post.created_at | date: "'posted' MMMM d." }}</p>
-      </li>
-    </ul>
+      </article>
+    </div>
 
   </div>
 
