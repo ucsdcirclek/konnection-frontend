@@ -22,7 +22,7 @@ app.controller('PostCreateCtrl',
         function() {
           console.log('There was an error!');
         }
-        );
+      );
     };
 
     $scope.create = create;
