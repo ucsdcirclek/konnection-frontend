@@ -323,7 +323,7 @@ app.controller('EventCreateCtrl',
 
       Restangular.all('admin').all('events').post(values).then(
         function(result) {
-          $state.go('admin.home');
+          $state.go('event', {id: result.id});
         },
         function() {
           console.log('There was an error!');
@@ -365,7 +365,7 @@ app.controller('EventUpdateCtrl',
 
       $scope.event.patch(values).then(
         function(result) {
-          $state.go('admin.home');
+          $state.go('event', {id: result.id});
         },
         function() {
           console.log('There was an error!');
