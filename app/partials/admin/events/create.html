@@ -3,25 +3,25 @@
   <br />
   <form ng-submit="create()">
     <label for="title">Title</label>
-    <input type="text" name="title" ng-model="title" placeholder="Title">
+    <input type="text" name="title" ng-model="event.title" placeholder="Title">
 
     <label for="description">Description</label>
-    <textarea froala name="description" ng-model="description"></textarea>
+    <textarea froala name="description" ng-model="event.description"></textarea>
 
     <label for="event_location">Event Location</label>
-    <input type="text" name="event_location" placeholder="123 A Street" ng-model="eventLocation">
+    <input type="text" name="event_location" placeholder="123 A Street" ng-model="event.eventLocation">
 
     <label for="meeting_location">Meeting Location</label>
-    <input type="text" name="meetingLocation" placeholder="Sun God Lawn" ng-model="meetingLocation">
+    <input type="text" name="meetingLocation" placeholder="Sun God Lawn" ng-model="event.meetingLocation">
 
     <label for="startDate">Event Start</label>
-    <quick-datepicker ng-model="startDate"></quick-datepicker>
+    <quick-datepicker ng-model="event.startDate"></quick-datepicker>
 
     <label for="endDate">Event End</label>
-    <quick-datepicker ng-model="endDate"></quick-datepicker>
+    <quick-datepicker ng-model="event.endDate"></quick-datepicker>
 
     <label for="closeDate">Signup Close</label>
-    <quick-datepicker ng-model="closeDate"></quick-datepicker>
+    <quick-datepicker ng-model="event.closeDate"></quick-datepicker>
 
     <br />
 

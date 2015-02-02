@@ -306,19 +306,19 @@ app.controller('EventWeekCtrl',
 app.controller('EventCreateCtrl',
   ['$scope', '$state', 'Restangular', function($scope, $state, Restangular) {
 
-    $scope.startDate = new Date();
-    $scope.endDate = new Date();
-    $scope.closeDate = new Date();
+    $scope.event.startDate = new Date();
+    $scope.event.endDate = new Date();
+    $scope.event.closeDate = new Date();
 
     var create = function() {
       var values = {
-        title: $scope.title,
-        description: $scope.description,
-        event_location: $scope.eventLocation,
-        meeting_location: $scope.meetingLocation,
-        start_time: $scope.startDate.toISOString().replace(/\.[0-9]*/g, ''),
-        end_time: $scope.endDate.toISOString().replace(/\.[0-9]*/g, ''),
-        close_time: $scope.closeDate.toISOString().replace(/\.[0-9]*/g, '')
+        title: $scope.event.title,
+        description: $scope.event.description,
+        event_location: $scope.event.eventLocation,
+        meeting_location: $scope.event.meetingLocation,
+        start_time: $scope.event.startDate.toISOString().replace(/\.[0-9]*/g, ''),
+        end_time: $scope.event.endDate.toISOString().replace(/\.[0-9]*/g, ''),
+        close_time: $scope.event.closeDate.toISOString().replace(/\.[0-9]*/g, '')
       };
 
       Restangular.all('admin').all('events').post(values).then(
@@ -337,7 +337,19 @@ app.controller('EventCreateCtrl',
 app.controller('EventUpdateCtrl',
   ['$scope', '$state', '$stateParams', 'Restangular', function($scope, $state, $stateParams, Restangular) {
 
-    $scope.event = Restangular.all('admin').one('events', $stateParams.id).get().$object;
+    $scope.event = Restangular.all('admin').one('events', $stateParams.id).get().then(
+      function(event) {
+        $scope.event.title = event.title;
+        $scope.event.description = event.description;
+        $scope.event.event_location = event.event_location;
+        $scope.event.meeting_location = event.meeting_location;
+        $scope.event.start_time = moment(event.start_time).toDate();
+        $scope.event.end_time = moment(event.end_time).toDate();
+        $scope.event.close_time = moment(event.close_time).toDate();
+      }
+    );
+
+    console.log($scope.event);
 
     $scope.update = function() {
 
