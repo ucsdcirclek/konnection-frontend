@@ -364,7 +364,7 @@ app.controller('EventUpdateCtrl',
         close_time: (new Date($scope.event.close_time)).toISOString().replace(/\.[0-9]*/g, '')
       };
 
-      $scope.event.patch(values).then(
+      Restangular.all('admin').one('events', $stateParams.id).patch(values).then(
         function(result) {
           $state.go('event', {id: result.id});
         },
