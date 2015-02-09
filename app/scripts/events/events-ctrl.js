@@ -348,7 +348,7 @@ app.controller('EventUpdateCtrl',
         $scope.event.meeting_location = event.meeting_location;
         $scope.event.start_time = moment(event.start_time).toDate();
         $scope.event.end_time = moment(event.end_time).toDate();
-        $scope.event.open_time = moment(event.close_time).toDate();
+        $scope.event.open_time = moment(event.open_time).toDate();
         $scope.event.close_time = moment(event.close_time).toDate();
       }
     );
@@ -364,7 +364,7 @@ app.controller('EventUpdateCtrl',
         meeting_location: $scope.event.meeting_location,
         start_time: (new Date($scope.event.start_time)).toISOString().replace(/\.[0-9]*/g, ''),
         end_time: (new Date($scope.event.end_time)).toISOString().replace(/\.[0-9]*/g, ''),
-        open_time: (new Date($scope.event.end_time)).toISOString().replace(/\.[0-9]*/g, ''),
+        open_time: (new Date($scope.event.open_time)).toISOString().replace(/\.[0-9]*/g, ''),
         close_time: (new Date($scope.event.close_time)).toISOString().replace(/\.[0-9]*/g, '')
       };
 
