@@ -76,7 +76,7 @@
     <h2>Announcements</h2>
 
     <div id="announcements" ng-controller="PostShowCtrl">
-      <article ng-repeat="post in allPosts | orderBy:'created_at':true">
+      <article ng-repeat="post in allPosts | orderBy:'created_at':true | limitObjectTo: 2">
         <h3>{{ post.title }}</h3>
         <p class="date">{{ post.created_at | date: "MMMM d, yyyy" }}</p>
         <p ng-bind-html="post.content"></p>
