@@ -44,6 +44,7 @@ app
 
         Auth.login(credentials, $scope.remember).then(
           function(user) {
+
             $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
 
             if ($scope.lastState) {
@@ -52,7 +53,25 @@ app
             }
 
             $state.go('home');
-          }, function () {
+
+          }, function (result) {
+
+            /* result parameter is error Object returned from service which
+             * data on login error, including a message which can be accessed
+             * with |result.data.error.message|.
+             */
+
+            // generic error message for a failed login
+            $scope.errorMessage = "Login failed. Please re-enter your username and password.";
+
+            /*
+             * Manually resets fields in login form; $scope.reset() function
+             * does not behave as expected.
+             */
+            $scope.auth.username = '';
+            $scope.auth.password = '';
+            $scope.remember = false;
+
             $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
           }
         );

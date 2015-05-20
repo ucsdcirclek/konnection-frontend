@@ -1,6 +1,6 @@
 'use strict';
 
-app.factory('Auth', ['Restangular', '$window', 'Session', '$rootScope', function(Restangular, $window, Session, $rootScope) {
+app.factory('Auth', ['Restangular', '$window', 'Session', '$rootScope', '$q', function(Restangular, $window, Session, $rootScope, $q) {
 
   var authService = {};
 
@@ -39,8 +39,13 @@ app.factory('Auth', ['Restangular', '$window', 'Session', '$rootScope', function
       $rootScope.setCurrentUser(result.user);
 
       return result.user;
-    }, function() {
-      console.log('Login failed');
+
+    }, function(result) {
+
+      console.log("Login failed.");
+
+      // explicitly rejects promise for next chained promise to fail
+      return $q.reject(result.data.error.message);
     });
   };
 
@@ -55,7 +60,7 @@ app.factory('Auth', ['Restangular', '$window', 'Session', '$rootScope', function
         });
       },
       function() {
-        error();
+        console.log("Login failed");
       }
     );
   };

@@ -3,6 +3,9 @@
     <form ng-submit="login()">
       <h3>Login</h3>
       <hr />
+
+      <p class="errorMessage" ng-show="errorMessage">{{ errorMessage }}</p>
+
       <label for="username">Username</label>
       <input autofocus type="text" name="username" placeholder="username" ng-model="auth.username">
       <label for="password">Password</label>
